@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://addons/psx_look/shaders/psx_lit.gdshader" id="1_sj6ia"]
+[ext_resource type="Texture2D" path="res://apartment/textures/carpet_wall.png" id="2_1yig8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sj6ia")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_1yig8")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = null
+shader_parameter/uv_scroll = null
+shader_parameter/snap_pixels = null
+shader_parameter/affine = 0.55
+shader_parameter/vertex_colors = null

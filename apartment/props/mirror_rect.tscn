@@ -1,0 +1,48 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://apartment/scripts/item.gd" id="1_ti5gd"]
+[ext_resource type="Material" path="res://apartment/materials/wood_dark.tres" id="2_wqt6t"]
+[ext_resource type="Material" path="res://apartment/materials/mirror.tres" id="3_tmyba"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_unopo"]
+_surfaces = [{
+"aabb": AABB(-0.24, -0.36, 0, 0.48, 0.72, 0.02),
+"attribute_data": PackedByteArray("/////wAAAAAAAIA//////wAAAAAAAAA//////wAAgD8AAAA//////wAAgD8AAIA//////wAAAAAAAAAA/////wAAgD8AAAAA/////wAAAAAAAIA//////wAAAAAAAAA//////wAAgD8AAAA//////wAAgD8AAIA//////wAAAAAAAAAA/////wAAgD8AAAAA/////wAAAAAAAIA//////wAAAAAAAAA//////wAAAD8AAAA//////wAAAD8AAIA//////wAAgD8AAAA//////wAAgD8AAIA//////wAAAAAAAAAA/////wAAAD8AAAAA/////wAAgD8AAAAA/////wAAAAAAAIA//////wAAAAAAAAA//////wAAAD8AAAA//////wAAAD8AAIA//////wAAgD8AAAA//////wAAgD8AAIA//////wAAAAAAAAAA/////wAAAD8AAAAA/////wAAgD8AAAAA/////wAAAAAAAIA//////wAAAAAAAAAA/////wAAAD8AAAAA/////wAAAD8AAIA//////wAAgD8AAAAA/////wAAgD8AAIA/v7+//wAAAAAAAIA/v7+//wAAAAAAAAAAv7+//wAAAD8AAAAAv7+//wAAAD8AAIA/v7+//wAAgD8AAAAAv7+//wAAgD8AAIA/"),
+"format": 34359742495,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAQAEAAUAAQAFAAIABgAHAAgABgAIAAkABwAKAAsABwALAAgADAANAA4ADAAOAA8ADwAOABAADwAQABEADQASABMADQATAA4ADgATABQADgAUABAAFQAWABcAFQAXABgAGAAXABkAGAAZABoAFgAbABwAFgAcABcAFwAcAB0AFwAdABkAHgAfACAAHgAgACEAIQAgACIAIQAiACMAJAAlACYAJAAmACcAJwAmACgAJwAoACkA"),
+"material": ExtResource("2_wqt6t"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("j8J1PuxRuL4K16M8j8J1PgAAAAAK16M8j8J1PgAAAAAAAAAAj8J1PuxRuL4AAAAAj8J1PuxRuD4K16M8j8J1PuxRuD4AAAAAj8J1vuxRuL4AAAAAj8J1vgAAAAAAAAAAj8J1vgAAAAAK16M8j8J1vuxRuL4K16M8j8J1vuxRuD4AAAAAj8J1vuxRuD4K16M8j8J1vuxRuL4K16M8j8J1vgAAAAAK16M8AAAAAAAAAAAK16M8AAAAAOxRuL4K16M8j8J1PgAAAAAK16M8j8J1PuxRuL4K16M8j8J1vuxRuD4K16M8AAAAAOxRuD4K16M8j8J1PuxRuD4K16M8j8J1PuxRuL4AAAAAj8J1PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOxRuL4AAAAAj8J1vgAAAAAAAAAAj8J1vuxRuL4AAAAAj8J1PuxRuD4AAAAAAAAAAOxRuD4AAAAAj8J1vuxRuD4AAAAAj8J1vuxRuD4K16M8j8J1vuxRuD4AAAAAAAAAAOxRuD4AAAAAAAAAAOxRuD4K16M8j8J1PuxRuD4AAAAAj8J1PuxRuD4K16M8j8J1vuxRuL4AAAAAj8J1vuxRuL4K16M8AAAAAOxRuL4K16M8AAAAAOxRuL4AAAAAj8J1PuxRuL4K16M8j8J1PuxRuL4AAAAA////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP//////fwCA/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
+}, {
+"aabb": AABB(-0.2, -0.32, 0.021, 0.4, 0.64, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAIA//////wAAAAAAAAA//////wAAgD8AAAA//////wAAgD8AAIA//////wAAAAAAAAAA/////wAAgD8AAAAA"),
+"format": 34359742495,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAQAEAAUAAQAFAAIA"),
+"material": ExtResource("3_tmyba"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("zcxMvgrXo74xCKw8zcxMvgAAAAAxCKw8zcxMPgAAAAAxCKw8zcxMPgrXo74xCKw8zcxMvgrXoz4xCKw8zcxMPgrXoz4xCKw8/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA")
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fc2wg"]
+size = Vector3(0.48, 0.72, 0.04)
+
+[node name="MirrorRect" type="Node3D" unique_id=1348787925]
+script = ExtResource("1_ti5gd")
+title = "Зеркало"
+description = "Зеркало в прихожей. По краям серебро отошло чёрными пятнами."
+material = "glass"
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=852022006]
+mesh = SubResource("ArrayMesh_unopo")
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1362236325]
+
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=850450760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+shape = SubResource("BoxShape3D_fc2wg")

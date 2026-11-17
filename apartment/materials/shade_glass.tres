@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/psx_cutout.gdshader" id="1_rfdf4"]
+[ext_resource type="Texture2D" path="res://apartment/textures/plastic_cream.png" id="2_amduf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rfdf4")
+shader_parameter/albedo = Color(1.25, 1.22, 1.12, 1)
+shader_parameter/albedo_texture = ExtResource("2_amduf")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = null
+shader_parameter/uv_scroll = null
+shader_parameter/snap_pixels = null
+shader_parameter/affine = 0.55
+shader_parameter/vertex_colors = null
+shader_parameter/alpha_cut = null

@@ -1,0 +1,48 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://apartment/scripts/item.gd" id="1_pe6i4"]
+[ext_resource type="Material" path="res://apartment/materials/chrome.tres" id="2_qwswm"]
+[ext_resource type="Material" path="res://apartment/materials/newspaper.tres" id="3_1ffq1"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mewj6"]
+_surfaces = [{
+"aabb": AABB(-0.003, -0.003, 0, 0.006, 0.006, 0.04),
+"attribute_data": PackedByteArray("/////wAAAAAAAIA//////wAAAAAAAAAA/////wAAgD4AAAAA/////wAAgD4AAIA/zMzM/wAAAD8AAAA/zMzM/wAAgD8AAAA/zMzM/wAAAD8AAIA//////wAAAD8AAAA//////wAAAD8AAIA//////wAAgD8AAAA//////wAAgD4AAIA//////wAAgD4AAAAA/////wAAAD8AAAAA/////wAAAD8AAIA/zMzM/wAAAD8AAAA/zMzM/wAAAD8AAIA/zMzM/wAAAAAAAAA//////wAAAD8AAAA//////wAAAAAAAAA//////wAAAD8AAIA//////wAAAD8AAIA//////wAAAD8AAAAA/////wAAQD8AAAAA/////wAAQD8AAIA/zMzM/wAAAD8AAAA/zMzM/wAAAAAAAAA/zMzM/wAAAD8AAAAA/////wAAAD8AAAA//////wAAAD8AAAAA/////wAAAAAAAAA//////wAAQD8AAIA//////wAAQD8AAAAA/////wAAgD8AAAAA/////wAAgD8AAIA/zMzM/wAAgD8AAAA//////wAAgD8AAAA/"),
+"format": 34359742495,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABwAIAAkACgALAAwACgAMAA0ADgAPABAAEQASABMAFAAVABYAFAAWABcAGAAZABoAGwAcAB0AHgAfACAAHgAgACEAGAAaACIAGwAjABwA"),
+"material": ExtResource("2_qwswm"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("pptEuwAAAAAAAAAApptEuwAAAAAK1yM9AAAAAKabRLsK1yM9AAAAAKabRLsAAAAAAAAAAAAAAAAAAAAApptEuwAAAAAAAAAAL91YoKabRLsAAAAAAAAAAAAAAAAK1yM9L91YoKabRLsK1yM9pptEuwAAAAAK1yM9L91YoKabRLsAAAAAL91YoKabRLsK1yM9pptEOwAAAAAK1yM9pptEOwAAAAAAAAAAAAAAAAAAAAAAAAAAL91YoKabRLsAAAAApptEOy/d2KAAAAAAAAAAAAAAAAAK1yM9pptEOy/d2KAK1yM9L91YoKabRLsK1yM9pptEOy/d2KAAAAAApptEOy/d2KAK1yM9AAAAAKabRDsK1yM9AAAAAKabRDsAAAAAAAAAAAAAAAAAAAAApptEOy/d2KAAAAAA46UiIaabRDsAAAAAAAAAAAAAAAAK1yM946UiIaabRDsK1yM9pptEOy/d2KAK1yM946UiIaabRDsAAAAA46UiIaabRDsK1yM9pptEuwAAAAAK1yM9pptEuwAAAAAAAAAApptEuy/dWCEAAAAApptEuy/dWCEK1yM9/z//P1RVVNX/P/8/VFVU1f8//z9UVVTV/z//P1RVVNX//////38AgP//////fwCA//////9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/v/8/VFWpqv+//z9UVamq/7//P1RVqar/v/8/VFWpqv//////fwCA//////9/AID//////38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP+//79UVVTV/7//v1RVVNX/v/+/VFVU1f+//79UVVTV//////9/AID//////38AgP//////fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/z//v1RVqar/P/+/VFWpqv8//79UVamq/z//v1RVqar//////38AgP9//3//fwCA")
+}, {
+"aabb": AABB(-0.07, -0.16, 0.005, 0.14, 0.17, 0.009000001),
+"attribute_data": PackedByteArray("/////wAAAAAAAIA//////wAAAAAAAAAA/////wAAgD8AAAAA/////wAAgD8AAIA/8vLy/wAAAAAAAIA/8vLy/wAAAAAAAAAA8vLy/wAAgD8AAAAA8vLy/wAAgD8AAIA/5eXl/wAAAAAAAIA/5eXl/wAAAAAAAAAA5eXl/wAAgD8AAAAA5eXl/wAAgD8AAIA/2NjY/wAAAAAAAIA/2NjY/wAAAAAAAAAA2NjY/wAAgD8AAAAA2NjY/wAAgD8AAIA/"),
+"format": 34359742495,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8A"),
+"material": ExtResource("3_1ffq1"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("KVyPvQrXI74K16M7KVyPvRDXIzwK16M7KVyPPRDXIzwK16M7KVyPPQrXI74K16M7KVyPvQrXI75vEgM8KVyPvRDXIzxvEgM8KVyPPRDXIzxvEgM8KVyPPQrXI75vEgM8KVyPvQrXI75YOTQ8KVyPvRDXIzxYOTQ8KVyPPRDXIzxYOTQ8KVyPPQrXI75YOTQ8KVyPvQrXI75CYGU8KVyPvRDXIzxCYGU8KVyPPRDXIzxCYGU8KVyPPQrXI75CYGU8/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AIA=")
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3chc5"]
+size = Vector3(0.16, 0.19, 0.04)
+
+[node name="PaperNail" type="Node3D" unique_id=1794194685]
+script = ExtResource("1_pe6i4")
+title = "Газета"
+description = "Нарезанная газета на гвозде."
+material = "paper"
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1281332055]
+mesh = SubResource("ArrayMesh_mewj6")
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1706673439]
+
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=980660030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, 0.02)
+shape = SubResource("BoxShape3D_3chc5")

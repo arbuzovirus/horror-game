@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/psx_unlit.gdshader" id="1_fvrn3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fvrn3")
+shader_parameter/albedo = Color(0.01, 0.01, 0.012, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = null
+shader_parameter/uv_scroll = null
+shader_parameter/snap_pixels = null
+shader_parameter/affine = 0.55
+shader_parameter/vertex_colors = null

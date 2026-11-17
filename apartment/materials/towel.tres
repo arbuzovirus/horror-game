@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/psx_cutout.gdshader" id="1_h38b7"]
+[ext_resource type="Texture2D" path="res://apartment/textures/towel.png" id="2_qf12d"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h38b7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_qf12d")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = null
+shader_parameter/uv_scroll = null
+shader_parameter/snap_pixels = null
+shader_parameter/affine = 0.55
+shader_parameter/vertex_colors = null
+shader_parameter/alpha_cut = null

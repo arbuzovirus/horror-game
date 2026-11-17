@@ -1,0 +1,22 @@
+[gd_scene format=4]
+
+[ext_resource type="Material" path="res://apartment/materials/coat.tres" id="1_vpt80"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_33r1q"]
+_surfaces = [{
+"aabb": AABB(-0.35, 0, -0.22, 0.7, 0.01, 0.44),
+"attribute_data": PackedByteArray("/////7u7O78AAAAA/////7u7O7+IiAi9/////727Oz+IiAi9/////727Oz8AAAAA/////7u7O78AAAAA/////7u7O7+IiAi9/////727Oz+IiAi9/////727Oz8AAAAA/////1VVlb8AAAAA/////1VVlb+IiAi9/////wAAAACIiAi9/////wAAAAAAAAAA/////1VVlT+IiAi9/////1VVlT8AAAAA/////1VVlb8AAAAA/////1VVlb+IiAi9/////wAAAACIiAi9/////wAAAAAAAAAA/////1VVlT+IiAi9/////1VVlT8AAAAA/////1VVlb+7uzs//////1VVlb+9uzu//////wAAAAC9uzu//////wAAAAC7uzs//////1VVlT+9uzu//////1VVlT+7uzs/v7+//1VVlb+7uzs/v7+//1VVlb+9uzu/v7+//wAAAAC9uzu/v7+//wAAAAC7uzs/v7+//1VVlT+9uzu/v7+//1VVlT+7uzs/"),
+"format": 34359742495,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsACwAKAAwACwAMAA0ADgAPABAADgAQABEAEQAQABIAEQASABMAFAAVABYAFAAWABcAFwAWABgAFwAYABkAGgAbABwAGgAcAB0AHQAcAB4AHQAeAB8A"),
+"material": ExtResource("1_vpt80"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("MzOzPgAAAACuR2E+MzOzPgrXIzyuR2E+MzOzPgrXIzyuR2G+MzOzPgAAAACuR2G+MzOzvgAAAACuR2G+MzOzvgrXIzyuR2G+MzOzvgrXIzyuR2E+MzOzvgAAAACuR2E+MzOzvgAAAACuR2E+MzOzvgrXIzyuR2E+AAAAAArXIzyuR2E+AAAAAAAAAACuR2E+MzOzPgrXIzyuR2E+MzOzPgAAAACuR2E+MzOzPgAAAACuR2G+MzOzPgrXIzyuR2G+AAAAAArXIzyuR2G+AAAAAAAAAACuR2G+MzOzvgrXIzyuR2G+MzOzvgAAAACuR2G+MzOzvgrXIzyuR2E+MzOzvgrXIzyuR2G+AAAAAArXIzyuR2G+AAAAAArXIzyuR2E+MzOzPgrXIzyuR2G+MzOzPgrXIzyuR2E+MzOzvgAAAACuR2G+MzOzvgAAAACuR2E+AAAAAAAAAACuR2E+AAAAAAAAAACuR2G+MzOzPgAAAACuR2E+MzOzPgAAAACuR2G+////f/9//7////9//3//v////3//f/+/////f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP//////fwCA//////9/AID//////38AgP//////fwCA//////9/AID//////38AgP9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/vw==")
+}]
+
+[node name="Doormat" type="Node3D" unique_id=1693397939]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=472784425]
+mesh = SubResource("ArrayMesh_33r1q")

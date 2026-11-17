@@ -1,0 +1,888 @@
+extends Node3D
+## Builds an old Soviet apartment stairwell (podъezd) and drops the player in it.
+## Everything is sealed: all doors are locked and there is no way outside.
+
+const HW := 1.3            # half width of the shaft
+const Z_BACK := -2.2       # wall behind the apartment landing
+const RUN := 2.52          # horizontal length of one flight
+const Z_END := 3.92        # window wall behind the half-landing
+const STOREY := 3.0
+const FLOORS := 4
+const STEPS := 9
+const RISE := 1.5 / STEPS
+const TREAD := RUN / STEPS
+const FLIGHT_W := 1.2
+const TOP := STOREY * (FLOORS - 1) + 2.8
+
+const TEX := "res://assets/textures/"
+const MODELS := "res://assets/models/"
+const AUDIO := "res://assets/audio/"
+
+var world: StaticBody3D
+var player: CharacterBody3D
+var rng := RandomNumberGenerator.new()
+var flicker_lights: Array[OmniLight3D] = []
+var flicker_bulbs: Array[StandardMaterial3D] = []
+var flicker_hums: Array[AudioStreamPlayer3D] = []
+var event_sounds: Array[AudioStream] = []
+var _event_t := 8.0
+
+var m_wall: ShaderMaterial
+var m_concrete: StandardMaterial3D
+var m_tile: StandardMaterial3D
+var m_white: StandardMaterial3D
+var m_metal: StandardMaterial3D
+var m_metal_grey: StandardMaterial3D
+var m_door: StandardMaterial3D
+var m_frame: StandardMaterial3D
+var m_rail: StandardMaterial3D
+var m_paper: StandardMaterial3D
+var m_glass: StandardMaterial3D
+var m_black: StandardMaterial3D
+
+
+var _cur: Node
+
+
+func _enter_tree() -> void:
+	# Echoing concrete stairwell. Must exist before any sound player is ready.
+	if AudioServer.get_bus_index("Reverb") == -1:
+		AudioServer.add_bus()
+		var idx := AudioServer.bus_count - 1
+		AudioServer.set_bus_name(idx, "Reverb")
+		AudioServer.set_bus_send(idx, "Master")
+		var rv := AudioEffectReverb.new()
+		rv.room_size = 0.75
+		rv.damping = 0.35
+		rv.spread = 0.8
+		rv.wet = 0.38
+		rv.dry = 0.9
+		rv.predelay_msec = 40.0
+		AudioServer.add_bus_effect(idx, rv)
+
+
+func _ready() -> void:
+	rng.seed = 1986
+	_cur = self
+	var bake := "--bake" in OS.get_cmdline_user_args()
+	# The level is normally saved inside main.tscn, where it can be edited.
+	# Run with "-- --bake" to throw that away and rebuild it from this script.
+	if bake or get_child_count() == 0:
+		for c in get_children():
+			remove_child(c)
+			c.free()
+		_build_all()
+	_runtime_init()
+	if bake:
+		_bake()
+		return
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--shot="):
+			_take_shots(a.trim_prefix("--shot="))
+
+
+func _section(title: String) -> void:
+	var n := Node3D.new()
+	n.name = title
+	add_child(n)
+	_cur = n
+
+
+func _build_all() -> void:
+	world = StaticBody3D.new()
+	world.name = "Collision"
+	add_child(world)
+
+	_make_materials()
+	_section("Shell")
+	_build_shell()
+	_section("Landings")
+	_build_landings()
+	_section("Flights")
+	for k in FLOORS - 1:
+		_build_flight(k * STOREY, true)
+		_build_flight(k * STOREY + 1.5, false)
+	_build_top_guard()
+	_section("Windows")
+	for k in FLOORS - 1:
+		_build_window(k)
+	_section("Doors")
+	_build_doors()
+	_section("Mailboxes")
+	_build_mailboxes()
+	_section("Radiators")
+	_build_radiator(0)
+	_build_radiator(1)
+	_section("Lamps")
+	_build_lamps()
+	_section("Props")
+	_build_props()
+	_section("Graffiti")
+	_build_graffiti()
+	_cur = self
+	_build_environment()
+	_build_audio()
+	_build_player()
+	_build_ui()
+
+
+func _runtime_init() -> void:
+	_cur = self
+	player = $Player
+	player.hint = $UI/Hint
+	player._show_hint("WASD — идти   Shift — бег   F — фонарик   E — осмотреть")
+	player._hint_time = 6.0
+	_loop(AUDIO + "drone.wav")
+	_loop(AUDIO + "hum.wav")
+	for n in ["thud", "knock", "creak", "steps_above", "thud", "knock"]:
+		event_sounds.append(load(AUDIO + n + ".wav"))
+	for n in get_tree().get_nodes_in_group("flicker_light"):
+		flicker_lights.append(n)
+	for n in get_tree().get_nodes_in_group("flicker_bulb"):
+		flicker_bulbs.append(n.material_override)
+	for n in get_tree().get_nodes_in_group("flicker_hum"):
+		flicker_hums.append(n)
+
+
+func _own(node: Node) -> void:
+	for c in node.get_children():
+		c.owner = self
+		if c.name.begins_with("@"):
+			c.name = c.get_class()
+		# Keep imported models as instances and let the player build itself.
+		if c.scene_file_path == "" and c != player:
+			_own(c)
+
+
+func _bake() -> void:
+	_own(self)
+	var ps := PackedScene.new()
+	var err := ps.pack(self)
+	if err == OK:
+		err = ResourceSaver.save(ps, "res://main.tscn")
+	print("BAKE result: ", err)
+	get_tree().quit()
+
+
+# ---------------------------------------------------------------- materials
+
+func _std(tex: String, tint := Color.WHITE, tex_scale := 0.5, metallic := false) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = tint
+	m.albedo_texture = load(TEX + tex + "_diff.jpg")
+	m.normal_enabled = true
+	m.normal_texture = load(TEX + tex + "_nor.jpg")
+	var arm: Texture2D = load(TEX + tex + "_arm.jpg")
+	m.roughness_texture = arm
+	m.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_GREEN
+	if metallic:
+		m.metallic = 1.0
+		m.metallic_texture = arm
+		m.metallic_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_BLUE
+	m.uv1_triplanar = true
+	m.uv1_world_triplanar = true
+	m.uv1_scale = Vector3(tex_scale, tex_scale, tex_scale)
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	return m
+
+
+func _flat(color: Color, rough := 0.8) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = color
+	m.roughness = rough
+	return m
+
+
+func _make_materials() -> void:
+	m_wall = ShaderMaterial.new()
+	m_wall.shader = load("res://shaders/wall.gdshader")
+	m_wall.set_shader_parameter("paint_tex", load(TEX + "peeling_painted_wall_diff.jpg"))
+	m_wall.set_shader_parameter("plaster_tex", load(TEX + "worn_plaster_wall_diff.jpg"))
+	m_wall.set_shader_parameter("flight_run", RUN)
+	m_wall.set_shader_parameter("storey", STOREY)
+
+	m_concrete = _std("concrete_floor_worn_001", Color(0.75, 0.73, 0.68), 0.7)
+	m_tile = _std("old_mosaic_floor", Color(0.85, 0.82, 0.75), 0.6)
+	m_white = _std("worn_plaster_wall", Color(0.8, 0.78, 0.72), 0.5)
+	m_metal = _std("rusty_painted_metal", Color(0.45, 0.85, 0.8), 1.2)
+	m_metal_grey = _std("rusty_painted_metal", Color(0.55, 0.56, 0.55), 0.8)
+	m_door = _std("rusty_painted_metal", Color(0.2, 0.13, 0.1), 0.6)
+	m_frame = _flat(Color(0.16, 0.1, 0.07), 0.6)
+	m_rail = _flat(Color(0.2, 0.09, 0.05), 0.45)
+	m_paper = _flat(Color(0.62, 0.6, 0.52), 0.95)
+	m_black = _flat(Color(0.02, 0.02, 0.02), 0.5)
+	m_glass = StandardMaterial3D.new()
+	m_glass.albedo_color = Color(0.1, 0.13, 0.16)
+	m_glass.emission_enabled = true
+	m_glass.emission = Color(0.32, 0.42, 0.55)
+	m_glass.emission_energy_multiplier = 0.55
+	m_glass.roughness = 0.85
+
+
+# ------------------------------------------------------------------ helpers
+
+func _box(center: Vector3, size: Vector3, mat: Material, collide := true,
+		rot_x := 0.0, parent: Node3D = null) -> MeshInstance3D:
+	var mesh := BoxMesh.new()
+	mesh.size = size
+	var mi := MeshInstance3D.new()
+	mi.mesh = mesh
+	mi.material_override = mat
+	mi.position = center
+	mi.rotation.x = rot_x
+	(parent if parent else _cur).add_child(mi)
+	if collide:
+		_collider(center, size, rot_x)
+	return mi
+
+
+func _collider(center: Vector3, size: Vector3, rot_x := 0.0, body: Node3D = null) -> void:
+	var shape := BoxShape3D.new()
+	shape.size = size
+	var cs := CollisionShape3D.new()
+	cs.shape = shape
+	cs.position = center
+	cs.rotation.x = rot_x
+	(body if body else world).add_child(cs)
+
+
+func _label(text: String, pos: Vector3, rot_y: float, size := 40, color := Color(0.7, 0.68, 0.6)) -> void:
+	var l := Label3D.new()
+	l.text = text
+	l.font_size = size
+	l.pixel_size = 0.0025
+	l.modulate = color
+	l.outline_size = 0
+	l.shaded = true
+	l.position = pos
+	l.rotation.y = rot_y
+	_cur.add_child(l)
+
+
+# -------------------------------------------------------------------- shell
+
+func _build_shell() -> void:
+	var h := TOP + 0.6
+	var cy := TOP * 0.5
+	var zlen := Z_END - Z_BACK
+	var zc := (Z_END + Z_BACK) * 0.5
+	_box(Vector3(HW + 0.15, cy, zc), Vector3(0.3, h, zlen + 0.6), m_wall)
+	_box(Vector3(-HW - 0.15, cy, zc), Vector3(0.3, h, zlen + 0.6), m_wall)
+	_box(Vector3(0, cy, Z_BACK - 0.15), Vector3(HW * 2, h, 0.3), m_wall)
+	_box(Vector3(0, cy, Z_END + 0.15), Vector3(HW * 2, h, 0.3), m_wall)
+	# Ground slab and roof.
+	_box(Vector3(0, -0.15, zc), Vector3(HW * 2, 0.3, zlen), m_concrete)
+	_box(Vector3(0, 0.005, zc), Vector3(HW * 2, 0.01, zlen), m_tile, false)
+	_box(Vector3(0, TOP + 0.15, zc), Vector3(HW * 2, 0.3, zlen), m_white)
+	# Invisible barrier in the gap between the two flights.
+	_collider(Vector3(0, TOP * 0.5, RUN * 0.5), Vector3(0.08, TOP, RUN))
+
+
+func _build_landings() -> void:
+	for k in range(1, FLOORS):
+		var y := k * STOREY
+		_box(Vector3(0, y - 0.1, Z_BACK * 0.5), Vector3(HW * 2, 0.2, -Z_BACK), m_white)
+		_box(Vector3(0, y + 0.005, Z_BACK * 0.5), Vector3(HW * 2, 0.01, -Z_BACK), m_tile, false)
+	for k in FLOORS - 1:
+		var y := k * STOREY + 1.5
+		var d := Z_END - RUN
+		_box(Vector3(0, y - 0.1, RUN + d * 0.5), Vector3(HW * 2, 0.2, d), m_white)
+		_box(Vector3(0, y + 0.005, RUN + d * 0.5), Vector3(HW * 2, 0.01, d), m_tile, false)
+
+
+func _build_flight(y0: float, up_plus_z: bool) -> void:
+	var xc := (0.1 + FLIGHT_W * 0.5) * (1.0 if up_plus_z else -1.0)
+	var theta := atan2(1.5, RUN)
+	var length := sqrt(RUN * RUN + 1.5 * 1.5)
+	var rot := -theta if up_plus_z else theta
+	var n := Vector3(0, cos(theta), -sin(theta) if up_plus_z else sin(theta))
+
+	# Visible steps.
+	for i in STEPS:
+		var top := y0 + (i + 1) * RISE
+		var z := (i + 0.5) * TREAD if up_plus_z else RUN - (i + 0.5) * TREAD
+		var hgt := RISE + 0.02
+		_box(Vector3(xc, top - hgt * 0.5, z), Vector3(FLIGHT_W, hgt, TREAD), m_concrete, false)
+
+	# Sloped slab under the steps.
+	var mid := Vector3(xc, y0 + 0.75, RUN * 0.5)
+	_box(mid - n * 0.075, Vector3(FLIGHT_W, 0.15, length), m_white, false, rot)
+
+	# Walkable ramp (shifted half a step so feet sit on the treads).
+	var shift := TREAD * 0.5
+	var rmid := mid + Vector3(0, 0, -shift if up_plus_z else shift)
+	_collider(rmid - n * 0.1, Vector3(FLIGHT_W, 0.2, length), rot)
+	var top_z := RUN - TREAD * 0.25 if up_plus_z else TREAD * 0.25
+	_collider(Vector3(xc, y0 + 1.5 - 0.1, top_z), Vector3(FLIGHT_W, 0.2, TREAD * 0.5))
+
+	# Railing on the inner edge.
+	var rx := 0.13 * (1.0 if up_plus_z else -1.0)
+	for i in STEPS:
+		var base := y0 + (i + 1) * RISE
+		var z := (i + 0.5) * TREAD if up_plus_z else RUN - (i + 0.5) * TREAD
+		_box(Vector3(rx, base + 0.45, z), Vector3(0.018, 0.9, 0.018), m_metal, false)
+	_box(mid + Vector3(rx - xc, 0.9 + RISE * 0.5, 0), Vector3(0.05, 0.035, length), m_rail, false, rot)
+	_box(mid + Vector3(rx - xc, 0.1 + RISE * 0.5, 0), Vector3(0.02, 0.02, length), m_metal, false, rot)
+
+
+func _build_top_guard() -> void:
+	var y := (FLOORS - 1) * STOREY
+	_collider(Vector3(0.65, y + 0.5, 0.0), Vector3(1.3, 1.0, 0.06))
+	_box(Vector3(0.65, y + 0.93, 0.0), Vector3(1.3, 0.035, 0.05), m_rail, false)
+	_box(Vector3(0.65, y + 0.1, 0.0), Vector3(1.3, 0.02, 0.02), m_metal, false)
+	for i in 9:
+		_box(Vector3(0.08 + i * 0.15, y + 0.46, 0.0), Vector3(0.018, 0.92, 0.018), m_metal, false)
+
+
+func _build_window(k: int) -> void:
+	var y := k * STOREY + 1.5 + 1.55
+	var z := Z_END - 0.01
+	_box(Vector3(0, y, z), Vector3(1.3, 1.1, 0.02), m_glass, false)
+	# Frame.
+	for x in [-0.66, 0.0, 0.66]:
+		_box(Vector3(x, y, z - 0.02), Vector3(0.06, 1.16, 0.05), m_frame, false)
+	for dy in [-0.56, 0.2, 0.56]:
+		_box(Vector3(0, y + dy, z - 0.02), Vector3(1.36, 0.06, 0.05), m_frame, false)
+	# Sill.
+	_box(Vector3(0, y - 0.62, Z_END - 0.11), Vector3(1.5, 0.05, 0.22), m_white)
+	var l := OmniLight3D.new()
+	l.position = Vector3(0, y, Z_END - 0.45)
+	l.light_color = Color(0.45, 0.58, 0.8)
+	l.light_energy = 0.35
+	l.omni_range = 4.5
+	l.omni_attenuation = 1.6
+	_cur.add_child(l)
+
+
+# -------------------------------------------------------------------- doors
+
+func _door(pos: Vector3, rot_y: float, number: String, message: String, metal := false) -> void:
+	var body := StaticBody3D.new()
+	body.position = pos
+	body.rotation.y = rot_y
+	body.name = "Door_" + (number if number != "" else "Entrance")
+	body.set_meta("message", message)
+	_cur.add_child(body)
+	var mat := m_metal_grey if metal else m_door
+	_box(Vector3(0, 1.06, 0.02), Vector3(1.04, 2.14, 0.04), m_frame, false, 0.0, body)
+	_box(Vector3(0, 1.03, 0.045), Vector3(0.9, 2.04, 0.05), mat, false, 0.0, body)
+	_collider(Vector3(0, 1.03, 0.04), Vector3(1.04, 2.1, 0.08), 0.0, body)
+	# Handle, lock, peephole.
+	_box(Vector3(0.36, 1.0, 0.09), Vector3(0.03, 0.14, 0.04), m_black, false, 0.0, body)
+	_box(Vector3(0.36, 1.14, 0.075), Vector3(0.04, 0.04, 0.01), m_black, false, 0.0, body)
+	if not metal:
+		_box(Vector3(0, 1.5, 0.075), Vector3(0.025, 0.025, 0.01), m_black, false, 0.0, body)
+	if number != "":
+		var l := Label3D.new()
+		l.text = number
+		l.font_size = 40
+		l.pixel_size = 0.0025
+		l.modulate = Color(0.75, 0.7, 0.55)
+		l.outline_size = 0
+		l.shaded = true
+		l.position = Vector3(0, 1.72, 0.075)
+		body.add_child(l)
+
+
+func _build_doors() -> void:
+	var num := 1
+	var msgs := ["Заперто.", "Никто не открывает.", "За дверью тихо.", "Заперто.",
+			"Глазок закрыт изнутри.", "Заперто."]
+	for k in FLOORS:
+		var y := k * STOREY
+		var spots := [
+			[Vector3(-0.65, y, Z_BACK), 0.0],
+			[Vector3(0.65, y, Z_BACK), 0.0],
+			[Vector3(-HW, y, -1.1), PI * 0.5],
+			[Vector3(HW, y, -1.1), -PI * 0.5],
+		]
+		for i in spots.size():
+			if k == 0 and i == 2:
+				_door(spots[i][0], spots[i][1], "", "Дверь подъезда заперта снаружи.", true)
+				continue
+			if k == 0 and i == 3:
+				continue  # mailboxes go here
+			_door(spots[i][0], spots[i][1], str(num), msgs[rng.randi() % msgs.size()])
+			num += 1
+
+
+func _build_mailboxes() -> void:
+	var root := Node3D.new()
+	root.position = Vector3(HW, 1.05, -1.1)
+	root.rotation.y = -PI * 0.5
+	_cur.add_child(root)
+	var n := 1
+	for row in 2:
+		for c in 5:
+			var p := Vector3(-0.44 + c * 0.22, 0.42 - row * 0.32, 0.07)
+			var b := _box(p, Vector3(0.2, 0.3, 0.14), m_metal, false, 0.0, root)
+			if (row == 1 and c == 3):
+				b.rotation = Vector3(0.0, 0.0, 0.12)
+				b.position.y -= 0.03
+			_box(p + Vector3(0, 0.09, 0.071), Vector3(0.14, 0.012, 0.004), m_black, false, 0.0, root)
+			_box(p + Vector3(0, -0.07, 0.071), Vector3(0.02, 0.02, 0.006), m_black, false, 0.0, root)
+			var l := Label3D.new()
+			l.text = str(n)
+			l.font_size = 28
+			l.pixel_size = 0.002
+			l.modulate = Color(0.8, 0.8, 0.7)
+			l.outline_size = 0
+			l.shaded = true
+			l.position = p + Vector3(0, 0.0, 0.073)
+			root.add_child(l)
+			n += 1
+	var body := StaticBody3D.new()
+	body.position = root.position
+	body.rotation = root.rotation
+	body.set_meta("message", "Почтовые ящики. Пусто.")
+	_cur.add_child(body)
+	_collider(Vector3(0, 0.26, 0.07), Vector3(1.12, 0.64, 0.14), 0.0, body)
+
+
+func _build_radiator(k: int) -> void:
+	var y := k * STOREY + 1.5
+	var z := Z_END - 0.09
+	for i in 8:
+		_box(Vector3(-0.28 + i * 0.08, y + 0.48, z), Vector3(0.06, 0.55, 0.12), m_metal, false)
+	_box(Vector3(0, y + 0.22, z), Vector3(0.66, 0.04, 0.06), m_metal, false)
+	_box(Vector3(0, y + 0.74, z), Vector3(0.66, 0.04, 0.06), m_metal, false)
+	_collider(Vector3(0, y + 0.45, z), Vector3(0.68, 0.7, 0.14))
+	# Riser pipe running the height of the building.
+	var pipe := CylinderMesh.new()
+	pipe.top_radius = 0.025
+	pipe.bottom_radius = 0.025
+	pipe.height = STOREY
+	var mi := MeshInstance3D.new()
+	mi.mesh = pipe
+	mi.material_override = m_metal_grey
+	mi.position = Vector3(0.45, y + STOREY * 0.5 - 0.2, Z_END - 0.06)
+	_cur.add_child(mi)
+
+
+# ------------------------------------------------------------------- lights
+
+func _build_lamps() -> void:
+	# Per floor: [energy, flicker]
+	var setup := [[0.9, false], [0.7, true], [0.0, false], [0.55, false]]
+	var bulb_scene: PackedScene = load(MODELS + "lightbulb_01/lightbulb_01.gltf")
+	for k in FLOORS:
+		var ceil_y := (k + 1) * STOREY - 0.2 if k < FLOORS - 1 else TOP
+		var pos := Vector3(0.0, ceil_y, -1.1)
+		var wire := CylinderMesh.new()
+		wire.top_radius = 0.006
+		wire.bottom_radius = 0.006
+		wire.height = 0.3
+		var wm := MeshInstance3D.new()
+		wm.mesh = wire
+		wm.material_override = m_black
+		wm.position = pos + Vector3(0, -0.15, 0)
+		_cur.add_child(wm)
+		_box(pos + Vector3(0, -0.32, 0), Vector3(0.04, 0.05, 0.04), m_black, false)
+
+		var energy: float = setup[k][0]
+		var glow := StandardMaterial3D.new()
+		glow.albedo_color = Color(0.25, 0.2, 0.12)
+		glow.roughness = 0.2
+		if energy > 0.0:
+			glow.emission_enabled = true
+			glow.emission = Color(1.0, 0.72, 0.35)
+			glow.emission_energy_multiplier = 3.0
+		var bulb := SphereMesh.new()
+		bulb.radius = 0.035
+		bulb.height = 0.09
+		var bm := MeshInstance3D.new()
+		bm.mesh = bulb
+		bm.material_override = glow
+		bm.position = pos + Vector3(0, -0.39, 0)
+		bm.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_cur.add_child(bm)
+		if bulb_scene and energy <= 0.0:
+			# The dead bulb on this floor uses the real model.
+			bm.visible = false
+			var b: Node3D = bulb_scene.instantiate()
+			b.position = pos + Vector3(0, -0.34, 0)
+			b.rotation.x = PI
+			_cur.add_child(b)
+
+		if energy > 0.0:
+			var l := OmniLight3D.new()
+			l.position = pos + Vector3(0, -0.5, 0)
+			l.light_color = Color(1.0, 0.7, 0.36)
+			l.light_energy = energy
+			l.omni_range = 6.5
+			l.omni_attenuation = 1.4
+			l.shadow_enabled = true
+			l.shadow_bias = 0.06
+			l.set_meta("base", energy)
+			_cur.add_child(l)
+			var hum := AudioStreamPlayer3D.new()
+			hum.stream = _loop(AUDIO + "hum.wav")
+			hum.position = l.position
+			hum.volume_db = -22.0
+			hum.unit_size = 1.5
+			hum.max_distance = 9.0
+			hum.autoplay = true
+			_cur.add_child(hum)
+			if setup[k][1]:
+				l.add_to_group("flicker_light", true)
+				bm.add_to_group("flicker_bulb", true)
+				hum.add_to_group("flicker_hum", true)
+
+
+var _flick_t := 0.0
+var _flick_on := true
+
+func _process(delta: float) -> void:
+	_flick_t -= delta
+	if _flick_t <= 0.0:
+		_flick_on = not _flick_on if rng.randf() < 0.6 else true
+		_flick_t = rng.randf_range(0.03, 0.18) if not _flick_on else rng.randf_range(0.05, 1.6)
+	for i in flicker_lights.size():
+		var l := flicker_lights[i]
+		var base: float = l.get_meta("base")
+		l.light_energy = base * (rng.randf_range(0.85, 1.0) if _flick_on else 0.04)
+		flicker_bulbs[i].emission_energy_multiplier = 3.0 if _flick_on else 0.15
+		flicker_hums[i].volume_db = -16.0 if _flick_on else -50.0
+
+	# Something, somewhere in the building.
+	_event_t -= delta
+	if _event_t <= 0.0 and not event_sounds.is_empty():
+		_event_t = rng.randf_range(14.0, 38.0)
+		var p := AudioStreamPlayer3D.new()
+		p.stream = event_sounds[rng.randi() % event_sounds.size()]
+		p.bus = "Reverb"
+		var floor_y := (rng.randi() % FLOORS) * STOREY + 1.5
+		if player and abs(floor_y - player.position.y) < 2.0:
+			floor_y += STOREY * (1.0 if floor_y < 6.0 else -1.0)
+		p.position = Vector3(rng.randf_range(-1.0, 1.0), floor_y, rng.randf_range(-2.0, 3.5))
+		p.unit_size = 5.0
+		p.max_distance = 40.0
+		p.volume_db = rng.randf_range(-10.0, -4.0)
+		p.pitch_scale = rng.randf_range(0.85, 1.1)
+		_cur.add_child(p)
+		p.finished.connect(p.queue_free)
+		p.play()
+
+
+# -------------------------------------------------------------------- props
+
+func _prop(path: String, pos: Vector3, rot_y := 0.0, scale := 1.0) -> void:
+	var scene: PackedScene = load(MODELS + path)
+	if scene == null:
+		return
+	var n: Node3D = scene.instantiate()
+	n.position = pos
+	n.rotation.y = rot_y
+	n.scale = Vector3.ONE * scale
+	_cur.add_child(n)
+
+
+func _build_props() -> void:
+	# Rubbish dumped under the first flight.
+	_prop("trashbag/trashbag.gltf", Vector3(-0.8, 0.0, 1.25), 0.4)
+	_prop("trashbag/trashbag.gltf", Vector3(-0.45, 0.0, 1.9), 2.3, 0.85)
+	_collider(Vector3(-0.65, 0.3, 1.6), Vector3(1.0, 0.6, 1.1))
+	# Bottles on the half-landings.
+	_prop("wine_bottles_01/wine_bottles_01.gltf", Vector3(0.95, 1.5, 3.6), 0.7)
+	_prop("wine_bottles_01/wine_bottles_01.gltf", Vector3(-0.9, 7.5, 3.55), 2.6)
+	# Scattered paper.
+	var spots := [
+		[Vector3(0, 0, -1.1), Vector2(1.1, 0.9), 7],
+		[Vector3(0, 1.5, RUN + 0.7), Vector2(1.1, 0.55), 9],
+		[Vector3(0, 4.5, RUN + 0.7), Vector2(1.1, 0.55), 5],
+		[Vector3(0, 6.0, -1.1), Vector2(1.1, 0.9), 6],
+		[Vector3(0, 9.0, -1.1), Vector2(1.1, 0.9), 4],
+	]
+	for s in spots:
+		for i in s[2]:
+			var c: Vector3 = s[0] + Vector3(rng.randf_range(-s[1].x, s[1].x), 0.012 + i * 0.001,
+					rng.randf_range(-s[1].y, s[1].y))
+			var p := _box(c, Vector3(rng.randf_range(0.12, 0.21), 0.002, rng.randf_range(0.15, 0.29)),
+					m_paper, false)
+			p.rotation.y = rng.randf() * TAU
+			p.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+
+# -------------------------------------------------------------------- audio
+
+func _loop(path: String) -> AudioStream:
+	var st: AudioStreamWAV = load(path)
+	st.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	st.loop_begin = 0
+	st.loop_end = int(st.get_length() * st.mix_rate)
+	return st
+
+
+func _build_audio() -> void:
+	var drone := AudioStreamPlayer.new()
+	drone.name = "Drone"
+	drone.stream = _loop(AUDIO + "drone.wav")
+	drone.volume_db = -11.0
+	drone.autoplay = true
+	_cur.add_child(drone)
+
+
+# ----------------------------------------------------------------- graffiti
+
+var _fonts: Array[Font] = []
+
+func _wall_xform(wall: String, along: float, y: float) -> Array:
+	match wall:
+		"R": return [Vector3(HW - 0.006, y, along), -PI * 0.5]
+		"L": return [Vector3(-HW + 0.006, y, along), PI * 0.5]
+		"B": return [Vector3(along, y, Z_BACK + 0.006), 0.0]
+		_: return [Vector3(along, y, Z_END - 0.006), PI]
+
+
+func _graffiti(wall: String, along: float, y: float, text: String, color: Color,
+		size := 64, tilt := 0.0, font := 0) -> void:
+	var x := _wall_xform(wall, along, y)
+	var l := Label3D.new()
+	l.text = text
+	l.font = _fonts[font]
+	l.font_size = size
+	l.pixel_size = 0.003
+	l.modulate = color
+	l.outline_size = 0
+	l.shaded = true
+	l.double_sided = false
+	l.position = x[0]
+	l.rotation = Vector3(0.0, x[1], tilt)
+	_cur.add_child(l)
+
+
+func _doodle(wall: String, along: float, y: float, strokes: Array, color: Color,
+		scale := 0.3, width := 0.014, tilt := 0.0) -> void:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for stroke: PackedVector2Array in strokes:
+		for i in stroke.size() - 1:
+			var a := stroke[i] * scale
+			var b := stroke[i + 1] * scale
+			var n := (b - a).orthogonal().normalized() * width * 0.5
+			var q := [a - n, a + n, b + n, b - n]
+			for j in [0, 1, 2, 0, 2, 3]:
+				st.set_normal(Vector3(0, 0, 1))
+				st.add_vertex(Vector3(q[j].x, q[j].y, 0.0))
+	var m := StandardMaterial3D.new()
+	m.albedo_color = color
+	m.roughness = 1.0
+	m.cull_mode = BaseMaterial3D.CULL_DISABLED
+	var mi := MeshInstance3D.new()
+	mi.mesh = st.commit()
+	mi.material_override = m
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var x := _wall_xform(wall, along, y)
+	mi.position = x[0]
+	mi.rotation = Vector3(0.0, x[1], tilt)
+	_cur.add_child(mi)
+
+
+func _circle(c: Vector2, r: float, from := 0.0, to := TAU, n := 20) -> PackedVector2Array:
+	var pts := PackedVector2Array()
+	for i in n + 1:
+		var a := lerpf(from, to, float(i) / n)
+		# A slightly wobbly hand.
+		pts.append(c + Vector2(cos(a), sin(a)) * r * (1.0 + 0.04 * sin(a * 5.0)))
+	return pts
+
+
+func _line(pts: Array) -> PackedVector2Array:
+	return PackedVector2Array(pts)
+
+
+func _build_graffiti() -> void:
+	for names in [["Segoe Print", "Comic Sans MS"], ["Arial Black", "Impact", "Arial"],
+			["Segoe Script", "Segoe Print", "Comic Sans MS"]]:
+		var f := SystemFont.new()
+		f.font_names = PackedStringArray(names)
+		_fonts.append(f)
+
+	var black := Color(0.05, 0.05, 0.06, 0.9)
+	var blue := Color(0.1, 0.16, 0.45, 0.9)
+	var red := Color(0.5, 0.04, 0.03, 0.95)
+	var chalk := Color(0.85, 0.85, 0.8, 0.85)
+	var green := Color(0.1, 0.3, 0.12, 0.9)
+
+	# Ground floor and first half-landing: ordinary scribbles.
+	_graffiti("R", 1.25, 2.55, "ЦОЙ ЖИВ", black, 96, 0.05, 1)
+	_graffiti("L", 0.9, 1.1, "Здесь был Вася", chalk, 44, -0.06, 0)
+	_graffiti("B", 0.0, 2.5, "КИНО", black, 72, 0.0, 1)
+	_graffiti("W", -0.98, 3.2, "Саша\n+\nМаша", blue, 40, 0.08, 2)
+	var heart := PackedVector2Array()
+	for i in 33:
+		var a := TAU * i / 32.0
+		heart.append(Vector2(16.0 * pow(sin(a), 3.0),
+				13.0 * cos(a) - 5.0 * cos(2 * a) - 2.0 * cos(3 * a) - cos(4 * a)) / 17.0)
+	_doodle("W", -0.98, 2.72, [heart], red, 0.11, 0.012, 0.1)
+	_graffiti("L", 3.25, 3.5, "ГрОб", black, 80, -0.04, 1)
+	# A child's drawing: house and sun.
+	_doodle("W", 0.98, 2.0, [
+		_line([Vector2(-1, -1), Vector2(1, -1), Vector2(1, 0.4), Vector2(-1, 0.4), Vector2(-1, -1)]),
+		_line([Vector2(-1.2, 0.4), Vector2(0, 1.5), Vector2(1.2, 0.4)]),
+		_line([Vector2(-0.3, -1), Vector2(-0.3, -0.2), Vector2(0.3, -0.2), Vector2(0.3, -1)]),
+		_line([Vector2(0.45, -0.1), Vector2(0.85, -0.1), Vector2(0.85, 0.25), Vector2(0.45, 0.25), Vector2(0.45, -0.1)]),
+	], chalk, 0.14, 0.012)
+	var sun := [_circle(Vector2(0, 0), 0.5)]
+	for i in 8:
+		var d := Vector2.RIGHT.rotated(TAU * i / 8.0)
+		sun.append(_line([d * 0.7, d * 1.1]))
+	_doodle("W", 1.05, 2.5, sun, Color(0.8, 0.7, 0.3, 0.85), 0.09, 0.012)
+
+	# First floor.
+	_graffiti("L", 1.3, 3.95, "ПАНКИ ХОЙ!", black, 72, 0.07, 1)
+	_graffiti("R", 1.3, 5.45, "Спартак — чемпион", red, 52, -0.03, 0)
+	_graffiti("B", 0.0, 5.5, "Лёха лох", blue, 40, 0.1, 2)
+	_graffiti("W", -0.98, 6.0, "мама,\nя дома", green, 36, -0.05, 2)
+	# Tally marks: someone was counting days.
+	var tally := []
+	for g in 3:
+		for i in 4:
+			var tx := g * 1.5 + i * 0.25
+			tally.append(_line([Vector2(tx, 0), Vector2(tx + 0.03, 1)]))
+		tally.append(_line([Vector2(g * 1.5 - 0.15, 0.2), Vector2(g * 1.5 + 0.9, 0.8)]))
+	_doodle("W", 1.2, 5.75, tally, black, 0.12, 0.01)
+
+	# Second floor (the dark one): it gets worse.
+	_graffiti("B", 0.0, 8.5, "НЕ ОТКРЫВАЙ", red, 80, -0.03, 0)
+	_graffiti("L", 1.2, 6.95, "оно на пятом этаже", red, 44, 0.05, 2)
+	_graffiti("R", 1.3, 8.4, "НЕ СМОТРИ\nНАВЕРХ", red, 64, 0.04, 0)
+	_doodle("R", 2.1, 8.4, [
+		_line([Vector2(0, -1), Vector2(0.03, 1)]),
+		_line([Vector2(-0.35, 0.5), Vector2(0.03, 1), Vector2(0.4, 0.55)]),
+	], red, 0.22, 0.018)
+	# An eye by the window.
+	_doodle("W", -0.98, 9.0, [
+		_circle(Vector2(0, -0.75), 1.25, 0.93, PI - 0.93, 14),
+		_circle(Vector2(0, 0.75), 1.25, PI + 0.93, TAU - 0.93, 14),
+		_circle(Vector2(0, 0), 0.38),
+		_circle(Vector2(0, 0), 0.12),
+	], black, 0.2, 0.014)
+	_graffiti("W", -0.98, 8.6, "я вижу\nтебя", black, 36, -0.04, 2)
+	# Stick figure with no face.
+	_doodle("W", 0.98, 8.6, [
+		_circle(Vector2(0, 1.3), 0.35),
+		_line([Vector2(0, 0.95), Vector2(0, -0.3)]),
+		_line([Vector2(-0.6, 0.2), Vector2(0, 0.7), Vector2(0.6, 0.2)]),
+		_line([Vector2(-0.45, -1.3), Vector2(0, -0.3), Vector2(0.45, -1.3)]),
+	], black, 0.16, 0.014)
+
+	# Top floor.
+	_graffiti("B", 0.0, 11.35, "ВЫХОДА НЕТ", red, 96, 0.0, 1)
+	_graffiti("R", 1.3, 10.4, "ты уже был здесь", chalk, 48, -0.05, 2)
+
+
+# -------------------------------------------------------------- environment
+
+func _build_environment() -> void:
+	var env := Environment.new()
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color.BLACK
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.3, 0.42, 0.4)
+	env.ambient_light_energy = 0.05
+	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	env.fog_enabled = true
+	env.fog_light_color = Color(0.015, 0.025, 0.022)
+	env.fog_density = 0.07
+	env.ssao_enabled = true
+	env.ssao_intensity = 2.5
+	env.glow_enabled = true
+	env.glow_intensity = 0.5
+	env.adjustment_enabled = true
+	env.adjustment_saturation = 0.8
+	env.adjustment_contrast = 1.08
+	var we := WorldEnvironment.new()
+	we.name = "WorldEnvironment"
+	we.environment = env
+	_cur.add_child(we)
+
+
+func _build_player() -> void:
+	player = CharacterBody3D.new()
+	player.name = "Player"
+	player.set_script(load("res://player.gd"))
+	player.position = Vector3(0.0, 0.05, -1.3)
+	player.rotation.y = PI
+	_cur.add_child(player)
+
+
+func _build_ui() -> void:
+	var post := CanvasLayer.new()
+	post.name = "PostProcess"
+	post.layer = 1
+	_cur.add_child(post)
+	var rect := ColorRect.new()
+	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var sm := ShaderMaterial.new()
+	sm.shader = load("res://shaders/retro.gdshader")
+	rect.material = sm
+	post.add_child(rect)
+
+	var ui := CanvasLayer.new()
+	ui.name = "UI"
+	ui.layer = 2
+	_cur.add_child(ui)
+	var dot := ColorRect.new()
+	dot.color = Color(1, 1, 1, 0.35)
+	dot.size = Vector2(2, 2)
+	dot.set_anchors_preset(Control.PRESET_CENTER)
+	dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ui.add_child(dot)
+	var hint := Label.new()
+	hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	hint.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	hint.offset_bottom = -18
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 12)
+	hint.add_theme_color_override("font_color", Color(0.85, 0.85, 0.78))
+	hint.add_theme_color_override("font_outline_color", Color.BLACK)
+	hint.add_theme_constant_override("outline_size", 4)
+	hint.name = "Hint"
+	ui.add_child(hint)
+
+
+# ---------------------------------------------------- screenshots (testing)
+
+func _take_shots(dir: String) -> void:
+	var views := [
+		[Vector3(0.0, 0.05, -1.6), PI, 0.0],            # ground floor, looking at stairs
+		[Vector3(-0.3, 0.05, -1.0), -PI * 0.5, 0.0],    # mailboxes
+		[Vector3(0.7, 1.55, 3.0), 0.0, -0.1],           # half landing looking back down/up
+		[Vector3(0.0, 1.55, 2.8), PI, 0.0],             # window + radiator
+		[Vector3(0.3, 3.05, -1.5), PI * 0.75, 0.0],     # floor 2 landing
+		[Vector3(0.0, 6.05, -0.6), 0.0, 0.0],           # dark floor, doors
+		[Vector3(-0.6, 0.05, -0.4), PI, 0.0],           # under the stairs
+		[Vector3(-0.6, 0.6, 1.25), PI * 0.5, 0.15],     # graffiti on the +X wall
+		[Vector3(0.0, 1.55, 2.7), PI, 0.25],            # window wall doodles
+		[Vector3(0.0, 6.05, -0.5), 0.0, 0.3],           # dark floor back wall
+		[Vector3(0.0, 7.55, 2.7), PI, 0.2],             # eye + figure
+		[Vector3(0.0, 9.05, -0.6), 0.0, 0.45],          # top floor
+	]
+	await get_tree().create_timer(1.0).timeout
+	# Walk test: hold W up the first flight, turn, and up the second.
+	player.set_process_unhandled_input(false)
+	player.auto_forward = true
+	var legs := [[Vector3(0.7, 0.05, -0.5), PI, "up A"], [Vector3(-0.7, 1.55, 3.0), 0.0, "up B"],
+			[Vector3(-0.7, 3.05, -0.5), PI, "down B"], [Vector3(0.7, 1.55, 3.0), 0.0, "down A"]]
+	for leg in legs:
+		player.position = leg[0]
+		player.rotation.y = leg[1]
+		player.velocity = Vector3.ZERO
+		for t in 4:
+			await get_tree().create_timer(0.5).timeout
+			print("WALK ", leg[2], " ", player.position, " floor=", player.is_on_floor())
+	player.auto_forward = false
+	for i in views.size():
+		player.set_physics_process(false)
+		player.position = views[i][0]
+		player.rotation.y = views[i][1]
+		player.camera.rotation.x = views[i][2]
+		player.flashlight.visible = i != 4
+		for f in 6:
+			await get_tree().process_frame
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("%s/shot_%d.png" % [dir, i])
+	get_tree().quit()

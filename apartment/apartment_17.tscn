@@ -1,0 +1,34 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://apartment/rooms/hallway.tscn" id="1_th4jn"]
+[ext_resource type="Script" path="res://apartment/scripts/room.gd" id="2_hcjgt"]
+[ext_resource type="PackedScene" path="res://apartment/rooms/kitchen.tscn" id="3_b0fxu"]
+[ext_resource type="PackedScene" path="res://apartment/rooms/living_room.tscn" id="4_tv05v"]
+[ext_resource type="PackedScene" path="res://apartment/rooms/bedroom.tscn" id="5_r72nq"]
+[ext_resource type="PackedScene" path="res://apartment/rooms/bathroom.tscn" id="6_jrft6"]
+[ext_resource type="PackedScene" path="res://apartment/rooms/toilet.tscn" id="7_4c56t"]
+
+[node name="Flat17" type="Node3D" unique_id=419345330]
+
+[node name="Hallway" type="Node3D" parent="." unique_id=378436160 instance=ExtResource("1_th4jn")]
+script = ExtResource("2_hcjgt")
+layer_bit = 10
+
+[node name="Kitchen" type="Node3D" parent="." unique_id=291650291 instance=ExtResource("3_b0fxu")]
+script = ExtResource("2_hcjgt")
+
+[node name="LivingRoom" type="Node3D" parent="." unique_id=1621276692 instance=ExtResource("4_tv05v")]
+script = ExtResource("2_hcjgt")
+layer_bit = 16
+
+[node name="Bedroom" type="Node3D" parent="." unique_id=14348373 instance=ExtResource("5_r72nq")]
+script = ExtResource("2_hcjgt")
+layer_bit = 17
+
+[node name="Bathroom" type="Node3D" parent="." unique_id=550145634 instance=ExtResource("6_jrft6")]
+script = ExtResource("2_hcjgt")
+layer_bit = 18
+
+[node name="Toilet" type="Node3D" parent="." unique_id=922855587 instance=ExtResource("7_4c56t")]
+script = ExtResource("2_hcjgt")
+layer_bit = 19
