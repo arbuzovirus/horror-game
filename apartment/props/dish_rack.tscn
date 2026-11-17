@@ -32,17 +32,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_p2dvx"]
 size = Vector3(0.52, 0.45, 0.26)
 
-[node name="DishRack" type="Node3D" unique_id=944796879]
+[node name="DishRack" type="Node3D" unique_id=1182181260]
 script = ExtResource("1_w8bml")
 title = "Сушилка"
 description = "Сушилка для посуды. Две тарелки и кружка с отбитой ручкой."
 material = "ceramic"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=359490627]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1963907912]
 mesh = SubResource("ArrayMesh_jwlf3")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1850696280]
+[node name="Body" type="StaticBody3D" parent="." unique_id=2002519823]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=177955334]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1794978692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225, 0.13)
 shape = SubResource("BoxShape3D_p2dvx")

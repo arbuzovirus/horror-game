@@ -44,17 +44,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_t04cn"]
 size = Vector3(0.7, 0.56, 1.35)
 
-[node name="Bathtub" type="Node3D" unique_id=572432691]
+[node name="Bathtub" type="Node3D" unique_id=1831180820]
 script = ExtResource("1_y2bvj")
 title = "Ванна"
 description = "Чугунная ванна. На дне рыжие разводы, к сливу прилип длинный волос."
 material = "ceramic"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1084957672]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=639281891]
 mesh = SubResource("ArrayMesh_8bv68")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1498380571]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1558100308]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=342128462]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=516210608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
 shape = SubResource("BoxShape3D_t04cn")

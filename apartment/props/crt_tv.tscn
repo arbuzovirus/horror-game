@@ -73,32 +73,32 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_bebbj"]
 size = Vector3(0.6, 0.52, 0.55)
 
-[node name="CrtTv" type="Node3D" unique_id=818261097]
+[node name="CrtTv" type="Node3D" unique_id=237538193]
 script = ExtResource("1_mke5t")
 screen_off = ExtResource("2_2bbrt")
 screen_on = ExtResource("3_brdrd")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=840325281]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1640505833]
 mesh = SubResource("ArrayMesh_6kcrq")
 
-[node name="Screen" type="MeshInstance3D" parent="." unique_id=1352582860]
+[node name="Screen" type="MeshInstance3D" parent="." unique_id=565126579]
 mesh = SubResource("ArrayMesh_q8j01")
 
-[node name="Glow" type="OmniLight3D" parent="." unique_id=654236608]
+[node name="Glow" type="OmniLight3D" parent="." unique_id=1873402308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.8)
 light_color = Color(0.55, 0.68, 1, 1)
 light_energy = 0.9
 omni_range = 3.8
 
-[node name="Sound" type="AudioStreamPlayer3D" parent="." unique_id=672452246]
+[node name="Sound" type="AudioStreamPlayer3D" parent="." unique_id=760556768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.1)
 stream = ExtResource("8_56nfv")
 volume_db = -22.0
 unit_size = 1.2
 max_distance = 10.0
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=812396458]
+[node name="Body" type="StaticBody3D" parent="." unique_id=584076944]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=906093691]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1778265927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26, -0.044999994)
 shape = SubResource("BoxShape3D_bebbj")

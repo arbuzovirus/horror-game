@@ -35,21 +35,21 @@ size = Vector3(0.72, 0.55, 0.67)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4iab"]
 size = Vector3(0.72, 0.85, 0.2)
 
-[node name="Armchair" type="Node3D" unique_id=998940564]
+[node name="Armchair" type="Node3D" unique_id=1085951717]
 script = ExtResource("1_mpx2p")
 title = "Кресло"
 description = "Кресло. На подлокотнике тёмное пятно — сюда годами ставили чашку."
 material = "fabric"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1115849525]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1063440423]
 mesh = SubResource("ArrayMesh_i2n0j")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=700723190]
+[node name="Body" type="StaticBody3D" parent="." unique_id=577006166]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1301579526]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1699047415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, -0.004999995)
 shape = SubResource("BoxShape3D_vjlgy")
 
-[node name="Shape1" type="CollisionShape3D" parent="Body" unique_id=2130200320]
+[node name="Shape1" type="CollisionShape3D" parent="Body" unique_id=1421064173]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425, -0.3)
 shape = SubResource("BoxShape3D_q4iab")

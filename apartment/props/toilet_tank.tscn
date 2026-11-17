@@ -59,21 +59,21 @@ size = Vector3(0.4, 0.3, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ysa1"]
 size = Vector3(0.08, 0.71, 0.08)
 
-[node name="ToiletTank" type="Node3D" unique_id=1695506032]
+[node name="ToiletTank" type="Node3D" unique_id=1135114681]
 script = ExtResource("1_483pv")
 title = "Бачок"
 description = "Чугунный бачок под потолком. Цепочка обмотана проволокой."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1745391397]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1421821602]
 mesh = SubResource("ArrayMesh_x424f")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=980960813]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1990537965]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1768445505]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=491617052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.1)
 shape = SubResource("BoxShape3D_egcms")
 
-[node name="Shape1" type="CollisionShape3D" parent="Body" unique_id=388083617]
+[node name="Shape1" type="CollisionShape3D" parent="Body" unique_id=869349406]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16999999, -0.095, 0.24000001)
 shape = SubResource("BoxShape3D_1ysa1")

@@ -34,20 +34,20 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_2yoej"]
 size = Vector3(0.14, 0.16, 0.05)
 
-[node name="LightSwitch" type="Node3D" unique_id=1321624655]
+[node name="LightSwitch" type="Node3D" unique_id=664623339]
 script = ExtResource("1_256uy")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=987805343]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=411121638]
 mesh = SubResource("ArrayMesh_cc8ru")
 
-[node name="Rocker" type="Node3D" parent="." unique_id=1292303605]
+[node name="Rocker" type="Node3D" parent="." unique_id=1725721582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.012)
 
-[node name="Mesh" type="MeshInstance3D" parent="Rocker" unique_id=662633048]
+[node name="Mesh" type="MeshInstance3D" parent="Rocker" unique_id=1685057995]
 mesh = SubResource("ArrayMesh_oiuap")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2128000542]
+[node name="Body" type="StaticBody3D" parent="." unique_id=504644891]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1097444521]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1059889112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.025)
 shape = SubResource("BoxShape3D_2yoej")

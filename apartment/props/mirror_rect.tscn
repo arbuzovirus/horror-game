@@ -32,17 +32,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_fc2wg"]
 size = Vector3(0.48, 0.72, 0.04)
 
-[node name="MirrorRect" type="Node3D" unique_id=1348787925]
+[node name="MirrorRect" type="Node3D" unique_id=1155899170]
 script = ExtResource("1_ti5gd")
 title = "Зеркало"
 description = "Зеркало в прихожей. По краям серебро отошло чёрными пятнами."
 material = "glass"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=852022006]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=906185150]
 mesh = SubResource("ArrayMesh_unopo")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1362236325]
+[node name="Body" type="StaticBody3D" parent="." unique_id=578592916]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=850450760]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=680601196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
 shape = SubResource("BoxShape3D_fc2wg")

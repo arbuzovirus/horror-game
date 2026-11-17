@@ -32,17 +32,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_3chc5"]
 size = Vector3(0.16, 0.19, 0.04)
 
-[node name="PaperNail" type="Node3D" unique_id=1794194685]
+[node name="PaperNail" type="Node3D" unique_id=703194117]
 script = ExtResource("1_pe6i4")
 title = "Газета"
 description = "Нарезанная газета на гвозде."
 material = "paper"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1281332055]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1285233837]
 mesh = SubResource("ArrayMesh_mewj6")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1706673439]
+[node name="Body" type="StaticBody3D" parent="." unique_id=2031139452]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=980660030]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1857893467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, 0.02)
 shape = SubResource("BoxShape3D_3chc5")

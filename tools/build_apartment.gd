@@ -563,10 +563,10 @@ func _hitbox(mb: MB, size: Vector3, offset := Vector3.ZERO) -> void:
 func _coat(mb: MB, top: Vector3, mat: String, rot := 0.0, length := 0.95) -> void:
 	mb.push(Transform3D(Basis(Vector3.UP, rot), top))
 	mb.cyl("chrome", Vector3(0, -0.05, 0), Vector3(0, 0.05, 0), 0.004, 0.004, 4)
-	mb.tbox(mat, Vector3(0, -0.05 - length, 0), 0.5, 0.13, 0.4, 0.1, length - 0.02)
-	mb.tbox(mat, Vector3(0, -0.09, 0), 0.4, 0.1, 0.16, 0.08, 0.05)                 # shoulders
+	mb.tbox(mat, Vector3(0, -0.05 - length, 0), 0.38, 0.12, 0.32, 0.1, length - 0.02)
+	mb.tbox(mat, Vector3(0, -0.09, 0), 0.32, 0.1, 0.14, 0.08, 0.05)                # shoulders
 	for s in [-1.0, 1.0]:
-		mb.tbox(mat, Vector3(0.2 * s, -0.68, 0.01), 0.08, 0.09, 0.1, 0.1, 0.58, 0.85, Vector3(0.015 * s, 0, 0))
+		mb.tbox(mat, Vector3(0.16 * s, -0.68, 0.01), 0.06, 0.08, 0.08, 0.09, 0.58, 0.85, Vector3(0.012 * s, 0, 0))
 	mb.cbox(mat, Vector3(-0.09, -0.12, -0.06), Vector3(0.09, -0.04, 0.05), 0.02)   # collar
 	mb.pop()
 
@@ -943,13 +943,13 @@ func _p_window(mb: MB, root: Node3D, w: float, h: float, t: float) -> void:
 
 
 func _p_curtains(mb: MB, _root: Node3D, w: float, drop: float, drapes: bool) -> void:
-	mb.cyl("brass", Vector3(-w * 0.5 - 0.35, 0, 0.12), Vector3(w + 0.7, 0, 0), 0.012, 0.012, 6)
+	mb.cyl("brass", Vector3(-w * 0.5 - 0.35, 0, 0.22), Vector3(w + 0.7, 0, 0), 0.012, 0.012, 6)
 	for s in [-1.0, 1.0]:
-		mb.box("brass", Vector3((w * 0.5 + 0.3) * s - 0.01, -0.01, 0), Vector3((w * 0.5 + 0.3) * s + 0.01, 0.01, 0.12))
-	mb.folds("tulle", -w * 0.5 - 0.15, w * 0.5 + 0.15, -drop, -0.02, 0.09, int(w * 6), 0.03, 0.45)
+		mb.box("brass", Vector3((w * 0.5 + 0.3) * s - 0.01, -0.01, 0), Vector3((w * 0.5 + 0.3) * s + 0.01, 0.01, 0.22))
+	mb.folds("tulle", -w * 0.5 - 0.15, w * 0.5 + 0.15, -drop, -0.02, 0.18, int(w * 6), 0.03, 0.45)
 	if drapes:
-		mb.folds("drape", -w * 0.5 - 0.4, -w * 0.5 + 0.05, -drop - 0.02, -0.02, 0.13, 3, 0.05, 0.5)
-		mb.folds("drape", w * 0.5 - 0.05, w * 0.5 + 0.4, -drop - 0.02, -0.02, 0.13, 3, 0.05, 0.5)
+		mb.folds("drape", -w * 0.5 - 0.4, -w * 0.5 + 0.05, -drop - 0.02, -0.02, 0.23, 3, 0.05, 0.5)
+		mb.folds("drape", w * 0.5 - 0.05, w * 0.5 + 0.4, -drop - 0.02, -0.02, 0.23, 3, 0.05, 0.5)
 
 
 func _p_radiator(mb: MB, _root: Node3D, sections: int) -> void:
@@ -1012,9 +1012,9 @@ func _p_wardrobe(mb: MB, root: Node3D) -> void:
 	mb.box("wood_dark", Vector3(-0.58, 0, 0.02), Vector3(0.58, 0.06, 0.55), 0.5, 0.6)
 	mb.box(w, Vector3(-0.58, 1.65, 0.02), Vector3(0.58, 1.67, 0.56), 0.5)
 	mb.cyl("chrome", Vector3(-0.58, 1.55, 0.3), Vector3(1.16, 0, 0), 0.01, 0.01, 6)
-	_coat(mb, Vector3(-0.3, 1.55, 0.3), "coat", 0.1, 1.05)
-	_coat(mb, Vector3(0.0, 1.55, 0.3), "coat_brown", -0.15, 0.85)
-	_coat(mb, Vector3(0.28, 1.55, 0.3), "drape", 0.2, 1.2)
+	_coat(mb, Vector3(-0.34, 1.55, 0.25), "coat", 0.05, 1.05)
+	_coat(mb, Vector3(0.0, 1.55, 0.35), "coat_brown", -0.08, 0.85)
+	_coat(mb, Vector3(0.33, 1.55, 0.27), "drape", 0.1, 1.2)
 	mb.cyl("lampshade", Vector3(0.25, 1.67, 0.3), Vector3(0, 0.18, 0), 0.15, 0.15, 10)
 	mb.cbox("leather", Vector3(-0.5, 1.67, 0.1), Vector3(-0.05, 1.82, 0.45), 0.02)
 	mb.col(Vector3(-0.62, 0, 0), Vector3(0.62, 2.06, 0.56))
@@ -1190,8 +1190,8 @@ func _p_sink_cab(mb: MB, root: Node3D) -> void:
 	mb.ibox("aluminium", Vector3(-bx, y - 0.16, bz0), Vector3(bx, y, bz1), 0.0, 0.6, "u")
 	mb.cyl("black", Vector3(0, y - 0.159, 0.3), Vector3(0, 0.002, 0), 0.025, 0.025, 6)
 	# Tap from the wall.
-	mb.cyl("chrome", Vector3(0, y, 0.05), Vector3(0, 0.25, 0), 0.012, 0.012, 6)
-	mb.cyl("chrome", Vector3(0, y + 0.23, 0.05), Vector3(0, -0.03, 0.18), 0.01, 0.008, 6)
+	mb.cyl("chrome", Vector3(0, y, 0.05), Vector3(0, 0.16, 0), 0.012, 0.012, 6)
+	mb.cyl("chrome", Vector3(0, y + 0.15, 0.05), Vector3(0, -0.03, 0.18), 0.01, 0.008, 6)
 	for s in [-1.0, 1.0]:
 		mb.cyl("chrome", Vector3(0.05 * s, y + 0.1, 0.0), Vector3(0, 0, 0.06), 0.008, 0.008, 4)
 		mb.box("chrome", Vector3(0.05 * s - 0.025, y + 0.095, 0.055), Vector3(0.05 * s + 0.025, y + 0.105, 0.065))
@@ -1326,9 +1326,9 @@ func _p_coat_rack(mb: MB, _root: Node3D) -> void:
 	for s in [-1.0, 1.0]:
 		mb.box("wood_dark", Vector3(0.43 * s, 1.7, 0), Vector3(0.45 * s, 1.84, 0.18))
 	mb.cbox("coat_brown", Vector3(-0.3, 1.86, 0.05), Vector3(-0.08, 1.98, 0.22), 0.04)        # ushanka
-	_coat(mb, Vector3(-0.27, 1.7, 0.12), "coat", 0.1, 1.05)
-	_coat(mb, Vector3(0.0, 1.7, 0.13), "drape", -0.05, 1.1)
-	_coat(mb, Vector3(0.27, 1.7, 0.12), "coat_brown", 0.15, 0.6)
+	_coat(mb, Vector3(-0.3, 1.7, 0.1), "coat", 0.05, 1.05)
+	_coat(mb, Vector3(0.0, 1.7, 0.19), "drape", -0.05, 1.1)
+	_coat(mb, Vector3(0.3, 1.7, 0.1), "coat_brown", 0.08, 0.6)
 	for i in 3:
 		var x := -0.3 + i * 0.2
 		for s in [-1.0, 1.0]:
@@ -1738,17 +1738,17 @@ func _r_kitchen(mb: MB, root: Node3D) -> void:
 		"right": [[-1.4, -2.2, 0.0, 2.0]],
 		"left": [[-1.05, -1.95, 0.85, 2.1]]})
 	mb.face("tile_kitchen", Vector3(-1.875, 0.86, -0.205), Vector3(-1.7, 0, 0), Vector3(0, 0.6, 0), 0.6)
-	mb.cyl("gas_pipe", Vector3(-2.45, 0.92, -0.24), Vector3(0, H - 0.92, 0), 0.014, 0.014, 6)
-	mb.cyl("gas_pipe", Vector3(-2.45, 0.92, -0.24), Vector3(-0.25, 0, 0), 0.014, 0.014, 6)
-	mb.box("gas_pipe", Vector3(-2.48, 1.2, -0.27), Vector3(-2.42, 1.26, -0.21))
-	mb.box("rubber", Vector3(-2.46, 1.26, -0.26), Vector3(-2.38, 1.27, -0.22))
+	mb.cyl("gas_pipe", Vector3(-2.53, 1.0, -0.25), Vector3(0, H - 1.0, 0), 0.014, 0.014, 6)
+	mb.cyl("gas_pipe", Vector3(-2.53, 1.0, -0.25), Vector3(-0.22, 0, 0), 0.014, 0.014, 6)
+	mb.box("gas_pipe", Vector3(-2.56, 1.2, -0.28), Vector3(-2.5, 1.26, -0.22))
+	mb.box("rubber", Vector3(-2.54, 1.26, -0.27), Vector3(-2.46, 1.27, -0.23))
 	_inst(root, p.sink_cab, Vector3(-3.275, 0, -0.2), PI, "Sink")
 	_inst(root, p.stove, Vector3(-2.725, 0, -0.2), PI, "Stove")
 	_inst(root, p.counter_cab, Vector3(-2.175, 0, -0.2), PI, "Counter")
 	_inst(root, p.fridge, Vector3(-1.575, 0, -0.2), PI, "Fridge")
 	_inst(root, p.wall_cab, Vector3(-3.275, 1.5, -0.2), PI, "WallCabinetL")
 	_inst(root, p.wall_cab, Vector3(-2.175, 1.5, -0.2), PI, "WallCabinetR")
-	_inst(root, p.dish_rack, Vector3(-3.275, 1.0, -0.2), PI, "DishRack")
+	_inst(root, p.dish_rack, Vector3(-3.275, 1.04, -0.2), PI, "DishRack")
 	_inst(root, p.window_90, Vector3(-3.575, 0.85, -1.5), PI / 2, "Window")
 	_inst(root, p.radiator_6, Vector3(-3.575, 0, -1.5), PI / 2, "Radiator")
 	_inst(root, p.curtains_90, Vector3(-3.575, 2.22, -1.5), PI / 2, "Curtains")
@@ -1773,12 +1773,12 @@ func _r_living(mb: MB, root: Node3D) -> void:
 	_inst(root, p.radiator_10, Vector3(-1.675, 0, -7.32), 0.0, "Radiator")
 	_inst(root, p.curtains_150, Vector3(-1.675, 2.28, -7.32), 0.0, "Curtains")
 	_inst(root, p.plant, Vector3(-1.15, 0.85, -7.25), 0.0, "Plant")
-	_inst(root, p.sofa, Vector3(-3.11, 0, -5.2), PI / 2, "Sofa")
+	_inst(root, p.sofa, Vector3(-3.0, 0, -5.2), PI / 2, "Sofa")
 	_inst(root, p.carpet_wall, Vector3(-3.575, 0.8, -5.2), PI / 2, "WallCarpet")
 	_inst(root, p.wall_unit, Vector3(-0.025, 0, -5.0), -PI / 2, "WallUnit")
 	_inst(root, p.armchair, Vector3(-2.95, 0, -3.35), PI / 2 + 0.35, "Armchair1")
 	_inst(root, p.armchair, Vector3(-2.8, 0, -6.75), PI / 2 - 0.55, "Armchair2")
-	_inst(root, p.coffee_table, Vector3(-2.15, 0, -5.2), PI / 2, "CoffeeTable")
+	_inst(root, p.coffee_table, Vector3(-2.0, 0, -5.2), PI / 2, "CoffeeTable")
 	_inst(root, p.carpet_floor, Vector3(-1.75, 0, -5.0), 0.0, "Carpet")
 	_lamp_at(root, p.chandelier, Vector3(-1.675, H, -5.0), "Chandelier", "lamp_living")
 	_switch_at(root, p.switch, Vector3(0.06, 1.35, -2.72), PI, "Switch", "lamp_living")
@@ -1863,9 +1863,9 @@ func _p_wall_clock(mb: MB) -> void:
 	mb.disc("plastic_cream", Vector3(0, -0.03, 0.121), Vector3(0.07, 0, 0), Vector3(0, 0.07, 0), 10)
 	mb.box("black", Vector3(-0.003, -0.03, 0.122), Vector3(0.003, 0.03, 0.124))
 	mb.box("black", Vector3(-0.05, -0.033, 0.122), Vector3(0.0, -0.027, 0.124))
-	mb.cyl("rubber", Vector3(-0.04, -0.15, 0.06), Vector3(0, -1.55, 0), 0.002, 0.002, 3)
-	mb.cyl("rubber", Vector3(0.04, -0.15, 0.06), Vector3(0, -0.9, 0), 0.002, 0.002, 3)
-	mb.cyl("brass", Vector3(-0.04, -1.85, 0.06), Vector3(0, 0.15, 0), 0.02, 0.02, 6)
-	mb.cyl("brass", Vector3(0.04, -1.2, 0.06), Vector3(0, 0.15, 0), 0.02, 0.02, 6)
+	mb.cyl("rubber", Vector3(-0.04, -0.15, 0.06), Vector3(0, -0.75, 0), 0.002, 0.002, 3)
+	mb.cyl("rubber", Vector3(0.04, -0.15, 0.06), Vector3(0, -0.5, 0), 0.002, 0.002, 3)
+	mb.cyl("brass", Vector3(-0.04, -1.05, 0.06), Vector3(0, 0.15, 0), 0.02, 0.02, 6)
+	mb.cyl("brass", Vector3(0.04, -0.8, 0.06), Vector3(0, 0.15, 0), 0.02, 0.02, 6)
 	mb.pop()
 	mb.col(Vector3(-0.16, -0.2, 0), Vector3(0.16, 0.25, 0.14))

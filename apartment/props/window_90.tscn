@@ -47,25 +47,25 @@ size = Vector3(0.9, 1.25, 0.04)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mf46n"]
 size = Vector3(1.02, 0.05, 0.41)
 
-[node name="Window90" type="Node3D" unique_id=1448703879]
+[node name="Window90" type="Node3D" unique_id=2411161]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=284855803]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1865954995]
 mesh = SubResource("ArrayMesh_h1bpw")
 
-[node name="Glass" type="Node3D" parent="." unique_id=663955548]
+[node name="Glass" type="Node3D" parent="." unique_id=1805760651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.075)
 script = ExtResource("4_ydnns")
 title = "Окно"
 description = "За окном соседняя пятиэтажка. В нескольких окнах горит свет. Ни одного силуэта."
 material = "glass"
 
-[node name="Body" type="StaticBody3D" parent="Glass" unique_id=1174803770]
+[node name="Body" type="StaticBody3D" parent="Glass" unique_id=295072487]
 
-[node name="Shape0" type="CollisionShape3D" parent="Glass/Body" unique_id=1412746509]
+[node name="Shape0" type="CollisionShape3D" parent="Glass/Body" unique_id=2123414077]
 shape = SubResource("BoxShape3D_qtllr")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2080539037]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1483661988]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=992633738]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1115903714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, -0.045)
 shape = SubResource("BoxShape3D_mf46n")

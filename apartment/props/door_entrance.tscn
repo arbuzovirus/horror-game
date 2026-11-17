@@ -89,22 +89,22 @@ _surfaces = [{
 "vertex_data": PackedByteArray("uB7Fvj0K1z+uR2G9uB7FvmZm5j+uR2G9uB7FvmZm5j/8qXG9uB7Fvj0K1z/8qXG9rkcBvz0K1z/8qXG9rkcBv2Zm5j/8qXG9rkcBv2Zm5j+uR2G9rkcBvz0K1z+uR2G9rkcBvz0K1z+uR2G9rkcBv2Zm5j+uR2G9uB7FvmZm5j+uR2G9uB7Fvj0K1z+uR2G9uB7Fvj0K1z/8qXG9uB7FvmZm5j/8qXG9rkcBv2Zm5j/8qXG9rkcBvz0K1z/8qXG9rkcBv2Zm5j+uR2G9rkcBv2Zm5j/8qXG9uB7FvmZm5j/8qXG9uB7FvmZm5j+uR2G9rkcBvz0K1z/8qXG9rkcBvz0K1z+uR2G9uB7Fvj0K1z+uR2G9uB7Fvj0K1z/8qXG9////f/9//7////9//3//v////3//f/+/////f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA//////9/AID//////38AgP//////fwCA//////9/AID/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
 }]
 
-[node name="DoorEntrance" type="Node3D" unique_id=1399316414]
+[node name="DoorEntrance" type="Node3D" unique_id=2105057465]
 
-[node name="Frame" type="MeshInstance3D" parent="." unique_id=110112630]
+[node name="Frame" type="MeshInstance3D" parent="." unique_id=155772738]
 mesh = SubResource("ArrayMesh_firpo")
 
-[node name="FrameBody" type="StaticBody3D" parent="." unique_id=360322432]
+[node name="FrameBody" type="StaticBody3D" parent="." unique_id=483550675]
 
-[node name="Shape0" type="CollisionShape3D" parent="FrameBody" unique_id=733542577]
+[node name="Shape0" type="CollisionShape3D" parent="FrameBody" unique_id=1322498974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495, 1.07, 0)
 shape = SubResource("BoxShape3D_o722p")
 
-[node name="Shape1" type="CollisionShape3D" parent="FrameBody" unique_id=1400622800]
+[node name="Shape1" type="CollisionShape3D" parent="FrameBody" unique_id=522000080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495, 1.07, 0)
 shape = SubResource("BoxShape3D_oo5bg")
 
-[node name="Hinge" type="Node3D" parent="." unique_id=925247666]
+[node name="Hinge" type="Node3D" parent="." unique_id=1863765361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0, 0.1)
 script = ExtResource("2_51s7d")
 open_angle = 100.0
@@ -112,12 +112,12 @@ open_time = 1.3
 ajar_angle = 30.0
 kind = "metal_door"
 
-[node name="Leaf" type="AnimatableBody3D" parent="Hinge" unique_id=519598634]
+[node name="Leaf" type="AnimatableBody3D" parent="Hinge" unique_id=852981684]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Hinge/Leaf" unique_id=2042474861]
+[node name="Shape0" type="CollisionShape3D" parent="Hinge/Leaf" unique_id=262878773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.445, 1.02, -0.0275)
 shape = SubResource("BoxShape3D_eyrjp")
 
-[node name="Mesh" type="MeshInstance3D" parent="Hinge/Leaf" unique_id=301600235]
+[node name="Mesh" type="MeshInstance3D" parent="Hinge/Leaf" unique_id=148361104]
 mesh = SubResource("ArrayMesh_rne1i")

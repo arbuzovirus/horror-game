@@ -32,17 +32,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_wu2fn"]
 size = Vector3(0.26, 0.26, 0.03)
 
-[node name="Vent" type="Node3D" unique_id=1140793635]
+[node name="Vent" type="Node3D" unique_id=690321170]
 script = ExtResource("1_qahs8")
 title = "Вентиляция"
 description = "Вентиляционная решётка. Из шахты тянет холодом, где-то далеко капает вода."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=20043985]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1233969201]
 mesh = SubResource("ArrayMesh_5ctq7")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2063161508]
+[node name="Body" type="StaticBody3D" parent="." unique_id=2141777595]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1592473178]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=586762604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.015)
 shape = SubResource("BoxShape3D_wu2fn")

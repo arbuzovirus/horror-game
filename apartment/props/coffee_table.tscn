@@ -85,12 +85,12 @@ size = Vector3(0.22, 0.03, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1rbly"]
 size = Vector3(0.94, 0.53, 0.58)
 
-[node name="CoffeeTable" type="Node3D" unique_id=1736914153]
+[node name="CoffeeTable" type="Node3D" unique_id=1999041597]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=981399353]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=450640760]
 mesh = SubResource("ArrayMesh_tmdpd")
 
-[node name="TVGuide" type="Node3D" parent="." unique_id=844153479]
+[node name="TVGuide" type="Node3D" parent="." unique_id=2105270408]
 transform = Transform3D(0.9553365, 0, 0.29552022, 0, 1, 0, -0.29552022, 0, 0.9553365, 0, 0.52, 0.06)
 script = ExtResource("6_jkcn1")
 title = "Программа передач"
@@ -98,17 +98,17 @@ description = "Программа телепередач на неделю. Об
 take = true
 material = "paper"
 
-[node name="Mesh" type="MeshInstance3D" parent="TVGuide" unique_id=1845988164]
+[node name="Mesh" type="MeshInstance3D" parent="TVGuide" unique_id=2140550852]
 mesh = SubResource("ArrayMesh_p1dg8")
 
-[node name="Body" type="StaticBody3D" parent="TVGuide" unique_id=703507503]
+[node name="Body" type="StaticBody3D" parent="TVGuide" unique_id=813399259]
 
-[node name="Shape0" type="CollisionShape3D" parent="TVGuide/Body" unique_id=900821933]
+[node name="Shape0" type="CollisionShape3D" parent="TVGuide/Body" unique_id=789137699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
 shape = SubResource("BoxShape3D_k5i6u")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1666911222]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1941022420]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=701050646]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=814696750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265, 0)
 shape = SubResource("BoxShape3D_1rbly")

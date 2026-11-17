@@ -85,30 +85,30 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_44tpv"]
 size = Vector3(0.6, 0.6, 0.29)
 
-[node name="WallCabinet" type="Node3D" unique_id=1525378982]
+[node name="WallCabinet" type="Node3D" unique_id=1465924693]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2068734264]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1158529506]
 mesh = SubResource("ArrayMesh_msjf4")
 
-[node name="Door" type="Node3D" parent="." unique_id=679174322]
+[node name="Door" type="Node3D" parent="." unique_id=705853127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29, 0.005, 0.3)
 script = ExtResource("5_dw4jg")
 description = "Тарелки с отбитыми краями. Пачка соли превратилась в камень."
 open_angle = -100.0
 kind = "cabinet"
 
-[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=1845461280]
+[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=994003691]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=1882572875]
+[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=969093330]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29, 0.295, -0.009)
 shape = SubResource("BoxShape3D_tbgq1")
 
-[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=596297523]
+[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=349396179]
 mesh = SubResource("ArrayMesh_pidac")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=187956071]
+[node name="Body" type="StaticBody3D" parent="." unique_id=64944456]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1582089579]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=3727405]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.145)
 shape = SubResource("BoxShape3D_44tpv")

@@ -20,17 +20,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6n5f"]
 size = Vector3(2.1, 1.45, 0.03)
 
-[node name="CarpetWall" type="Node3D" unique_id=766541454]
+[node name="CarpetWall" type="Node3D" unique_id=1024173615]
 script = ExtResource("1_g8gjo")
 title = "Ковёр"
 description = "Ковёр на стене. Узор выцвел там, где на него падало солнце."
 material = "fabric"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=839166351]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=379575781]
 mesh = SubResource("ArrayMesh_py1gs")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=292957623]
+[node name="Body" type="StaticBody3D" parent="." unique_id=693061112]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1558816636]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=697574422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0.015)
 shape = SubResource("BoxShape3D_w6n5f")

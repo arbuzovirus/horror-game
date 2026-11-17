@@ -72,27 +72,27 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_bgkdf"]
 size = Vector3(0.26, 0.36, 0.26)
 
-[node name="DeskLamp" type="Node3D" unique_id=1999256348]
+[node name="DeskLamp" type="Node3D" unique_id=169821918]
 script = ExtResource("1_8x635")
 energy = 0.7
 pull_switch = true
 on_material = ExtResource("2_rpdw8")
 off_material = ExtResource("3_qwkkp")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=173927424]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=472011830]
 mesh = SubResource("ArrayMesh_4acpr")
 
-[node name="Bulb" type="MeshInstance3D" parent="." unique_id=64972261]
+[node name="Bulb" type="MeshInstance3D" parent="." unique_id=843015962]
 mesh = SubResource("ArrayMesh_u4gk3")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=544391630]
+[node name="Light" type="OmniLight3D" parent="." unique_id=1775065016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.05)
 light_color = Color(1, 0.76, 0.48, 1)
 omni_range = 3.2
 omni_attenuation = 1.1
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2070501715]
+[node name="Body" type="StaticBody3D" parent="." unique_id=957376219]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1154862751]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=43275454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 0)
 shape = SubResource("BoxShape3D_bgkdf")

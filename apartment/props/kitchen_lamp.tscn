@@ -45,18 +45,18 @@ _surfaces = [{
 "vertex_data": PackedByteArray("zczMvM3MzL7NzMy8zczMPM3MzL7NzMy8CtejPArXo74K16O8CtejvArXo74K16O8zczMPM3MzL7NzMy8zczMPM3MzL7NzMw8CtejPArXo74K16M8CtejPArXo74K16O8zczMPM3MzL7NzMw8zczMvM3MzL7NzMw8CtejvArXo74K16M8CtejPArXo74K16M8zczMvM3MzL7NzMw8zczMvM3MzL7NzMy8CtejvArXo74K16O8CtejvArXo74K16M8CtejvArXo74K16M8CtejvArXo74K16O8CtejPArXo74K16O8CtejPArXo74K16M8zczMvM3MzL7NzMy8zczMvM3MzL7NzMw8zczMPM3MzL7NzMw8zczMPM3MzL7NzMy8d/j//wd4O4B3+P//B3g7gHf4//8HeDuAd/j//wd4O4B3+IeHh3+/w3f4h4eHf7/Dd/iHh4d/v8N3+IeHh3+/w/9/h4eHf/uD/3+Hh4d/+4P/f4eHh3/7g/9/h4eHf/uDhweHh4d/P7yHB4eHh38/vIcHh4eHfz+8hweHh4d/P7z/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
 }]
 
-[node name="KitchenLamp" type="Node3D" unique_id=2050552362]
+[node name="KitchenLamp" type="Node3D" unique_id=1568154837]
 script = ExtResource("1_crjgp")
 on_material = ExtResource("2_koxkj")
 off_material = ExtResource("3_7ct3q")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=330784893]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=921861448]
 mesh = SubResource("ArrayMesh_wb1em")
 
-[node name="Bulb" type="MeshInstance3D" parent="." unique_id=596280340]
+[node name="Bulb" type="MeshInstance3D" parent="." unique_id=946247137]
 mesh = SubResource("ArrayMesh_hgnvc")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=1341168303]
+[node name="Light" type="OmniLight3D" parent="." unique_id=1145027556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 light_color = Color(1, 0.76, 0.48, 1)
 omni_range = 4.0

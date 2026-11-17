@@ -45,19 +45,19 @@ _surfaces = [{
 "vertex_data": PackedByteArray("zcxMPtij8L4K16O8j8J1Ptij8L4K16O816NwPs7MzL6PwnW8hetRPs7MzL6PwnW8j8J1Ptij8L4K16O8j8J1Ptij8L4K16M816NwPs7MzL6PwnU816NwPs7MzL6PwnW8j8J1Ptij8L4K16M8zcxMPtij8L4K16M8hetRPs7MzL6PwnU816NwPs7MzL6PwnU8zcxMPtij8L4K16M8zcxMPtij8L4K16O8hetRPs7MzL6PwnW8hetRPs7MzL6PwnU8hetRPs7MzL6PwnU8hetRPs7MzL6PwnW816NwPs7MzL6PwnW816NwPs7MzL6PwnU8zcxMPtij8L4K16O8zcxMPtij8L4K16M8j8J1Ptij8L4K16M8j8J1Ptij8L4K16O8uB4Fvtij8L5Dni4+7FG4vdij8L5Dni4+XI/Cvc7MzL77vDM+AAAAvs7MzL77vDM+7FG4vdij8L5Dni4+7FG4vdij8L4FlFc+XI/Cvc7MzL5NdVI+XI/Cvc7MzL77vDM+7FG4vdij8L4FlFc+uB4Fvtij8L4FlFc+AAAAvs7MzL5NdVI+XI/Cvc7MzL5NdVI+uB4Fvtij8L4FlFc+uB4Fvtij8L5Dni4+AAAAvs7MzL77vDM+AAAAvs7MzL5NdVI+AAAAvs7MzL5NdVI+AAAAvs7MzL77vDM+XI/Cvc7MzL77vDM+XI/Cvc7MzL5NdVI+uB4Fvtij8L5Dni4+uB4Fvtij8L4FlFc+7FG4vdij8L4FlFc+7FG4vdij8L5Dni4+uB4Fvtij8L4FlFe+7FG4vdij8L4FlFe+XI/Cvc7MzL5NdVK+AAAAvs7MzL5NdVK+7FG4vdij8L4FlFe+7FG4vdij8L5Dni6+XI/Cvc7MzL77vDO+XI/Cvc7MzL5NdVK+7FG4vdij8L5Dni6+uB4Fvtij8L5Dni6+AAAAvs7MzL77vDO+XI/Cvc7MzL77vDO+uB4Fvtij8L5Dni6+uB4Fvtij8L4FlFe+AAAAvs7MzL5NdVK+AAAAvs7MzL77vDO+AAAAvs7MzL77vDO+AAAAvs7MzL5NdVK+XI/Cvc7MzL5NdVK+XI/Cvc7MzL77vDO+uB4Fvtij8L4FlFe+uB4Fvtij8L5Dni6+7FG4vdij8L5Dni6+7FG4vdij8L4FlFe+dvf//+Z2TYB29///5nZNgHb3///mdk2Advf//+Z2TYB294eIZH8+xHb3h4hkfz7EdveHiGR/PsR294eIZH8+xP9/iIhkf4yE/3+IiGR/jIT/f4iIZH+MhP9/iIhkf4yEiAiHiGR/wLuICIeIZH/Au4gIh4hkf8C7iAiHiGR/wLv/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/dvf//+Z2TYB29///5nZNgHb3///mdk2Advf//+Z2TYB294eIZH8+xHb3h4hkfz7EdveHiGR/PsR294eIZH8+xP9/h4hkf4yE/3+HiGR/jIT/f4eIZH+MhP9/h4hkf4yEiAiHiGR/wLuICIeIZH/Au4gIh4hkf8C7iAiHiGR/wLv/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/dvf//+Z2TYB29///5nZNgHb3///mdk2Advf//+Z2TYB294eIZH8+xHb3h4hkfz7EdveHiGR/PsR294eIZH8+xP9/h4hkf4yE/3+HiGR/jIT/f4eIZH+MhP9/h4hkf4yEiAiHiGR/wLuICIeIZH/Au4gIh4hkf8C7iAiHiGR/wLv/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
 }]
 
-[node name="Chandelier" type="Node3D" unique_id=1282039075]
+[node name="Chandelier" type="Node3D" unique_id=142970253]
 script = ExtResource("1_n5f2r")
 energy = 1.25
 on_material = ExtResource("2_hobkv")
 off_material = ExtResource("3_skm7g")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1930602525]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1578912372]
 mesh = SubResource("ArrayMesh_6a0y5")
 
-[node name="Bulb" type="MeshInstance3D" parent="." unique_id=1650956128]
+[node name="Bulb" type="MeshInstance3D" parent="." unique_id=124109034]
 mesh = SubResource("ArrayMesh_rfmpl")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=273396964]
+[node name="Light" type="OmniLight3D" parent="." unique_id=753106786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
 light_color = Color(1, 0.76, 0.48, 1)
 omni_range = 5.5

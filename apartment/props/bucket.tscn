@@ -44,17 +44,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_tv26g"]
 size = Vector3(0.3, 0.3, 0.3)
 
-[node name="Bucket" type="Node3D" unique_id=1122397628]
+[node name="Bucket" type="Node3D" unique_id=852867284]
 script = ExtResource("1_ry64c")
 title = "Ведро"
 description = "Эмалированное ведро. На дне — засохшая тряпка."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2024194628]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1117972029]
 mesh = SubResource("ArrayMesh_6rjj0")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1636748892]
+[node name="Body" type="StaticBody3D" parent="." unique_id=2130626715]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=442486883]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=966273562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("BoxShape3D_tv26g")

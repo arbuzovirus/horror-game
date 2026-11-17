@@ -56,17 +56,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_rml3x"]
 size = Vector3(0.44, 0.6, 0.12)
 
-[node name="BathMirror" type="Node3D" unique_id=604046318]
+[node name="BathMirror" type="Node3D" unique_id=1917569386]
 script = ExtResource("1_4u8q1")
 title = "Полочка"
 description = "Две зубные щётки в стакане. Щетина слиплась."
 material = "glass"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1900229665]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1238438558]
 mesh = SubResource("ArrayMesh_jte71")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=70253639]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1393705387]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=427429788]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1968314392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.06)
 shape = SubResource("BoxShape3D_rml3x")

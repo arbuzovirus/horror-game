@@ -137,46 +137,46 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_5uwf2"]
 size = Vector3(0.62, 0.88, 0.6)
 
-[node name="CounterCabinet" type="Node3D" unique_id=880378977]
+[node name="CounterCabinet" type="Node3D" unique_id=1106172685]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=270618951]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=522848288]
 mesh = SubResource("ArrayMesh_kphks")
 
-[node name="Drawer" type="Node3D" parent="." unique_id=1356461056]
+[node name="Drawer" type="Node3D" parent="." unique_id=406579868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
 script = ExtResource("6_bq2go")
 description = "Вилки, половник, штопор. На дне — пожелтевший рецепт пирога."
 contents = "cutlery"
 
-[node name="Box" type="AnimatableBody3D" parent="Drawer" unique_id=975169655]
+[node name="Box" type="AnimatableBody3D" parent="Drawer" unique_id=1717886258]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Drawer/Box" unique_id=1044208549]
+[node name="Shape0" type="CollisionShape3D" parent="Drawer/Box" unique_id=1919122062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.085, 0.58500004)
 shape = SubResource("BoxShape3D_71nv2")
 
-[node name="Mesh" type="MeshInstance3D" parent="Drawer/Box" unique_id=462077913]
+[node name="Mesh" type="MeshInstance3D" parent="Drawer/Box" unique_id=579045825]
 mesh = SubResource("ArrayMesh_25abh")
 
-[node name="Door" type="Node3D" parent="." unique_id=723795802]
+[node name="Door" type="Node3D" parent="." unique_id=1948571368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.08, 0.6)
 script = ExtResource("8_ex0s2")
 description = "Кастрюли, вставленные одна в другую."
 open_angle = -95.0
 kind = "cabinet"
 
-[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=86712793]
+[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=395669420]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=328859792]
+[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=914571016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 0.265, -0.009)
 shape = SubResource("BoxShape3D_b5vob")
 
-[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=654566054]
+[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=1477599276]
 mesh = SubResource("ArrayMesh_rln4f")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=531686219]
+[node name="Body" type="StaticBody3D" parent="." unique_id=347902613]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1011906325]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=42108622]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44, 0.3)
 shape = SubResource("BoxShape3D_5uwf2")

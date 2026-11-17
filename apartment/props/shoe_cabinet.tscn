@@ -164,29 +164,29 @@ size = Vector3(0.22, 0.14, 0.22)
 [sub_resource type="BoxShape3D" id="BoxShape3D_juh0m"]
 size = Vector3(0.52, 0.6, 0.3)
 
-[node name="ShoeCabinet" type="Node3D" unique_id=1829326141]
+[node name="ShoeCabinet" type="Node3D" unique_id=171821561]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2115973473]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1253968507]
 mesh = SubResource("ArrayMesh_8xsyy")
 
-[node name="Drawer" type="Node3D" parent="." unique_id=1569205708]
+[node name="Drawer" type="Node3D" parent="." unique_id=1533554154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 script = ExtResource("7_qy4re")
 description = "Квитанции, рожок для обуви, вязаные варежки."
 slide = 0.18
 contents = "things"
 
-[node name="Box" type="AnimatableBody3D" parent="Drawer" unique_id=1194540309]
+[node name="Box" type="AnimatableBody3D" parent="Drawer" unique_id=247803011]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Drawer/Box" unique_id=1118360245]
+[node name="Shape0" type="CollisionShape3D" parent="Drawer/Box" unique_id=238519061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0.28500003)
 shape = SubResource("BoxShape3D_qlabr")
 
-[node name="Mesh" type="MeshInstance3D" parent="Drawer/Box" unique_id=1320403283]
+[node name="Mesh" type="MeshInstance3D" parent="Drawer/Box" unique_id=1657971440]
 mesh = SubResource("ArrayMesh_ofoep")
 
-[node name="Keys" type="Node3D" parent="." unique_id=457529238]
+[node name="Keys" type="Node3D" parent="." unique_id=2083088947]
 transform = Transform3D(0.8253356, 0, 0.5646425, 0, 1, 0, -0.5646425, 0, 0.8253356, 0.14, 0.47, 0.16)
 script = ExtResource("9_ekq6c")
 title = "Ключи"
@@ -194,30 +194,30 @@ description = "Связка ключей. На кожаном брелоке в�
 take = true
 material = "keys"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys" unique_id=2076431842]
+[node name="Mesh" type="MeshInstance3D" parent="Keys" unique_id=372800905]
 mesh = SubResource("ArrayMesh_m0yji")
 
-[node name="Body" type="StaticBody3D" parent="Keys" unique_id=684055583]
+[node name="Body" type="StaticBody3D" parent="Keys" unique_id=508339809]
 
-[node name="Shape0" type="CollisionShape3D" parent="Keys/Body" unique_id=206632888]
+[node name="Shape0" type="CollisionShape3D" parent="Keys/Body" unique_id=1868588325]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.01)
 shape = SubResource("BoxShape3D_1688p")
 
-[node name="Phone" type="Node3D" parent="." unique_id=1202992389]
+[node name="Phone" type="Node3D" parent="." unique_id=1999768366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.47, 0.15)
 script = ExtResource("9_ekq6c")
 title = "Телефон"
 description = "Телефон. Подняли трубку — ни гудка, только тихое шипение."
 material = "small"
 
-[node name="Body" type="StaticBody3D" parent="Phone" unique_id=388508803]
+[node name="Body" type="StaticBody3D" parent="Phone" unique_id=1367486995]
 
-[node name="Shape0" type="CollisionShape3D" parent="Phone/Body" unique_id=471909985]
+[node name="Shape0" type="CollisionShape3D" parent="Phone/Body" unique_id=753362683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
 shape = SubResource("BoxShape3D_ydnqi")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1931974313]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1162245200]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=307724319]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1117142818]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.15)
 shape = SubResource("BoxShape3D_juh0m")

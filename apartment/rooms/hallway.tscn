@@ -125,83 +125,83 @@ size = Vector3(0.120000005, 0.5, 0.65999997)
 [sub_resource type="BoxShape3D" id="BoxShape3D_heioh"]
 size = Vector3(0.120000005, 2.5, 0.13000011)
 
-[node name="Hallway" type="Node3D" unique_id=378436160]
+[node name="Hallway" type="Node3D" unique_id=547300493]
 script = ExtResource("1_mv2b4")
 layer_bit = 10
 
-[node name="Shell" type="MeshInstance3D" parent="." unique_id=481619296]
+[node name="Shell" type="MeshInstance3D" parent="." unique_id=1810534771]
 mesh = SubResource("ArrayMesh_vmyyg")
 
-[node name="EntranceDoor" type="Node3D" parent="." unique_id=1399316414 instance=ExtResource("6_o12cf")]
+[node name="EntranceDoor" type="Node3D" parent="." unique_id=2105057465 instance=ExtResource("6_o12cf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.1)
 metadata/layers = 1040
 
-[node name="KitchenDoor" type="Node3D" parent="." unique_id=195079408 instance=ExtResource("7_wuu3m")]
+[node name="KitchenDoor" type="Node3D" parent="." unique_id=1158411507 instance=ExtResource("7_wuu3m")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.215, 0, -1.8)
 metadata/layers = 33792
 
-[node name="ToiletDoor" type="Node3D" parent="." unique_id=1002116310 instance=ExtResource("8_fsgww")]
+[node name="ToiletDoor" type="Node3D" parent="." unique_id=1947437012 instance=ExtResource("8_fsgww")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.215, 0, -0.66)
 metadata/layers = 525312
 
-[node name="BathroomDoor" type="Node3D" parent="." unique_id=1068784091 instance=ExtResource("9_iv11s")]
+[node name="BathroomDoor" type="Node3D" parent="." unique_id=2056086598 instance=ExtResource("9_iv11s")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.215, 0, -1.92)
 metadata/layers = 263168
 
-[node name="LivingRoomDoor" type="Node3D" parent="." unique_id=1462670766 instance=ExtResource("7_wuu3m")]
+[node name="LivingRoomDoor" type="Node3D" parent="." unique_id=518188012 instance=ExtResource("7_wuu3m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6, 0, -2.66)
 metadata/layers = 66560
 
-[node name="BedroomDoor" type="Node3D" parent="." unique_id=78818992 instance=ExtResource("8_fsgww")]
+[node name="BedroomDoor" type="Node3D" parent="." unique_id=444317170 instance=ExtResource("8_fsgww")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.775, 0, -2.66)
 metadata/layers = 132096
 
-[node name="CoatRack" type="Node3D" parent="." unique_id=200045870 instance=ExtResource("10_4lcpt")]
+[node name="CoatRack" type="Node3D" parent="." unique_id=1340761188 instance=ExtResource("10_4lcpt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.155, 0, -0.85)
 script = ExtResource("11_1rgf5")
 title = "Вешалка"
 description = "Пальто, плащ и детская куртка. Под ними сапоги и маленькие сандалии."
 material = "fabric"
 
-[node name="ShoeCabinet" type="Node3D" parent="." unique_id=1829326141 instance=ExtResource("12_74na3")]
+[node name="ShoeCabinet" type="Node3D" parent="." unique_id=171821561 instance=ExtResource("12_74na3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0, -2.6)
 
-[node name="Mirror" type="Node3D" parent="." unique_id=1348787925 instance=ExtResource("13_ig1ns")]
+[node name="Mirror" type="Node3D" parent="." unique_id=1155899170 instance=ExtResource("13_ig1ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 1.45, -2.6)
 script = ExtResource("11_1rgf5")
 title = "Зеркало"
 description = "Зеркало в прихожей. По краям серебро отошло чёрными пятнами."
 material = "glass"
 
-[node name="ElectricPanel" type="Node3D" parent="." unique_id=2143309604 instance=ExtResource("14_07cr3")]
+[node name="ElectricPanel" type="Node3D" parent="." unique_id=627704896 instance=ExtResource("14_07cr3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.78, 1.55, -0.2)
 
-[node name="Doormat" type="Node3D" parent="." unique_id=1693397939 instance=ExtResource("15_114u0")]
+[node name="Doormat" type="Node3D" parent="." unique_id=368118115 instance=ExtResource("15_114u0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.55)
 
-[node name="Lamp" type="Node3D" parent="." unique_id=1739623986 groups=["lamp_hall"] instance=ExtResource("16_s8vyw")]
+[node name="Lamp" type="Node3D" parent="." unique_id=689558600 groups=["lamp_hall"] instance=ExtResource("16_s8vyw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
 script = ExtResource("17_61j2f")
 energy = 0.9
 on_material = ExtResource("18_6vt0i")
 off_material = ExtResource("19_eixi4")
 
-[node name="Switch" type="Node3D" parent="." unique_id=1321624655 instance=ExtResource("20_tlhkw")]
+[node name="Switch" type="Node3D" parent="." unique_id=664623339 instance=ExtResource("20_tlhkw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.68, 1.35, -0.2)
 script = ExtResource("21_d4ke2")
 lamp_group = "lamp_hall"
 
-[node name="SwitchToilet" type="Node3D" parent="." unique_id=660072823 instance=ExtResource("20_tlhkw")]
+[node name="SwitchToilet" type="Node3D" parent="." unique_id=877851107 instance=ExtResource("20_tlhkw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.155, 1.45, -1.22)
 script = ExtResource("21_d4ke2")
 lamp_group = "lamp_toilet"
 
-[node name="SwitchBathroom" type="Node3D" parent="." unique_id=1666045246 instance=ExtResource("20_tlhkw")]
+[node name="SwitchBathroom" type="Node3D" parent="." unique_id=669088827 instance=ExtResource("20_tlhkw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.155, 1.45, -1.37)
 script = ExtResource("21_d4ke2")
 lamp_group = "lamp_bath"
 
-[node name="DecalGrime" type="Decal" parent="." unique_id=293927638]
+[node name="DecalGrime" type="Decal" parent="." unique_id=334963275]
 transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -0.68, 1.35, -0.2)
 size = Vector3(0.3, 0.16, 0.4)
 texture_albedo = ExtResource("22_qbm64")
@@ -209,7 +209,7 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="DecalTorn" type="Decal" parent="." unique_id=1025682374]
+[node name="DecalTorn" type="Decal" parent="." unique_id=842527263]
 transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.155, 0.35, -1.25)
 size = Vector3(0.6, 0.16, 0.6)
 texture_albedo = ExtResource("23_ollot")
@@ -217,7 +217,7 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="DecalCrack" type="Decal" parent="." unique_id=1957276078]
+[node name="DecalCrack" type="Decal" parent="." unique_id=1626449387]
 transform = Transform3D(-0.9553365, 0, -0.29552022, 0.29552022, 0, -0.9553365, 0, -1, 0, 0, 2.3, -0.2)
 size = Vector3(0.5, 0.16, 0.5)
 texture_albedo = ExtResource("24_5uh27")
@@ -225,7 +225,7 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="DecalMould" type="Decal" parent="." unique_id=459767360]
+[node name="DecalMould" type="Decal" parent="." unique_id=468202795]
 transform = Transform3D(-4.371139e-08, 0, 1, 1, 0, 4.371139e-08, 0, 1, 0, 1, 2.35, -2.6)
 size = Vector3(0.5, 0.16, 0.5)
 texture_albedo = ExtResource("25_clf4f")
@@ -233,7 +233,7 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="CeilingDamp" type="Decal" parent="." unique_id=818356272]
+[node name="CeilingDamp" type="Decal" parent="." unique_id=203137389]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.3, 2.5, -1.9)
 size = Vector3(0.9, 0.16, 0.9)
 texture_albedo = ExtResource("26_6qhik")
@@ -241,72 +241,72 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="Walls" type="StaticBody3D" parent="." unique_id=1578616509]
+[node name="Walls" type="StaticBody3D" parent="." unique_id=1671900321]
 
-[node name="Shape0" type="CollisionShape3D" parent="Walls" unique_id=980273268]
+[node name="Shape0" type="CollisionShape3D" parent="Walls" unique_id=890005734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -1.4)
 shape = SubResource("BoxShape3D_nq61x")
 
-[node name="Shape1" type="CollisionShape3D" parent="Walls" unique_id=213765227]
+[node name="Shape1" type="CollisionShape3D" parent="Walls" unique_id=1350473113]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8025, 1.25, -0.14)
 shape = SubResource("BoxShape3D_sr5mr")
 
-[node name="Shape2" type="CollisionShape3D" parent="Walls" unique_id=567028884]
+[node name="Shape2" type="CollisionShape3D" parent="Walls" unique_id=1906216329]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 2.275, -0.14)
 shape = SubResource("BoxShape3D_w3tp6")
 
-[node name="Shape3" type="CollisionShape3D" parent="Walls" unique_id=193258129]
+[node name="Shape3" type="CollisionShape3D" parent="Walls" unique_id=915347948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8025, 1.25, -0.14)
 shape = SubResource("BoxShape3D_ej31f")
 
-[node name="Shape4" type="CollisionShape3D" parent="Walls" unique_id=395831655]
+[node name="Shape4" type="CollisionShape3D" parent="Walls" unique_id=732093825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0775, 1.25, -2.6599998)
 shape = SubResource("BoxShape3D_rx0jj")
 
-[node name="Shape5" type="CollisionShape3D" parent="Walls" unique_id=380339212]
+[node name="Shape5" type="CollisionShape3D" parent="Walls" unique_id=2025579398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.25, -2.6599998)
 shape = SubResource("BoxShape3D_fqibh")
 
-[node name="Shape6" type="CollisionShape3D" parent="Walls" unique_id=1159171675]
+[node name="Shape6" type="CollisionShape3D" parent="Walls" unique_id=1225908893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12250003, 1.25, -2.6599998)
 shape = SubResource("BoxShape3D_ysern")
 
-[node name="Shape7" type="CollisionShape3D" parent="Walls" unique_id=1876517349]
+[node name="Shape7" type="CollisionShape3D" parent="Walls" unique_id=1939642612]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77500004, 2.25, -2.6599998)
 shape = SubResource("BoxShape3D_1gmxa")
 
-[node name="Shape8" type="CollisionShape3D" parent="Walls" unique_id=14768481]
+[node name="Shape8" type="CollisionShape3D" parent="Walls" unique_id=14530516]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13, 1.25, -2.6599998)
 shape = SubResource("BoxShape3D_lhig2")
 
-[node name="Shape9" type="CollisionShape3D" parent="Walls" unique_id=553749007]
+[node name="Shape9" type="CollisionShape3D" parent="Walls" unique_id=1058877754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2149999, 1.25, -0.8000001)
 shape = SubResource("BoxShape3D_nkfee")
 
-[node name="Shape10" type="CollisionShape3D" parent="Walls" unique_id=2101601468]
+[node name="Shape10" type="CollisionShape3D" parent="Walls" unique_id=1332020723]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2149999, 2.25, -1.8000001)
 shape = SubResource("BoxShape3D_jd5c4")
 
-[node name="Shape11" type="CollisionShape3D" parent="Walls" unique_id=1043646503]
+[node name="Shape11" type="CollisionShape3D" parent="Walls" unique_id=888053661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2149999, 1.25, -2.4)
 shape = SubResource("BoxShape3D_y2hp1")
 
-[node name="Shape12" type="CollisionShape3D" parent="Walls" unique_id=1296957008]
+[node name="Shape12" type="CollisionShape3D" parent="Walls" unique_id=1079349115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 1.25, -2.425)
 shape = SubResource("BoxShape3D_gaqsj")
 
-[node name="Shape13" type="CollisionShape3D" parent="Walls" unique_id=696797847]
+[node name="Shape13" type="CollisionShape3D" parent="Walls" unique_id=1828982135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 2.25, -1.92)
 shape = SubResource("BoxShape3D_p420p")
 
-[node name="Shape14" type="CollisionShape3D" parent="Walls" unique_id=79332197]
+[node name="Shape14" type="CollisionShape3D" parent="Walls" unique_id=1942523824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 1.25, -1.29)
 shape = SubResource("BoxShape3D_gw6uu")
 
-[node name="Shape15" type="CollisionShape3D" parent="Walls" unique_id=2041158010]
+[node name="Shape15" type="CollisionShape3D" parent="Walls" unique_id=2015646542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 2.25, -0.6599999)
 shape = SubResource("BoxShape3D_jw8a8")
 
-[node name="Shape16" type="CollisionShape3D" parent="Walls" unique_id=813767871]
+[node name="Shape16" type="CollisionShape3D" parent="Walls" unique_id=1353007263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 1.25, -0.26499987)
 shape = SubResource("BoxShape3D_heioh")

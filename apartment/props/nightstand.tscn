@@ -189,46 +189,46 @@ size = Vector3(0.16, 0.19, 0.099999994)
 [sub_resource type="BoxShape3D" id="BoxShape3D_88a41"]
 size = Vector3(0.46, 0.56, 0.38)
 
-[node name="Nightstand" type="Node3D" unique_id=501898311]
+[node name="Nightstand" type="Node3D" unique_id=1735427998]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=311670203]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1194215739]
 mesh = SubResource("ArrayMesh_abhvd")
 
-[node name="Drawer" type="Node3D" parent="." unique_id=694890372]
+[node name="Drawer" type="Node3D" parent="." unique_id=511650474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 script = ExtResource("3_5tcec")
 description = "Лекарства в коробочках, пожелтевший рецепт, очки в футляре."
 slide = 0.22
 contents = "things"
 
-[node name="Box" type="AnimatableBody3D" parent="Drawer" unique_id=1227772906]
+[node name="Box" type="AnimatableBody3D" parent="Drawer" unique_id=1644497581]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Drawer/Box" unique_id=2064746274]
+[node name="Shape0" type="CollisionShape3D" parent="Drawer/Box" unique_id=1351081933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.39499998)
 shape = SubResource("BoxShape3D_te22d")
 
-[node name="Mesh" type="MeshInstance3D" parent="Drawer/Box" unique_id=923178157]
+[node name="Mesh" type="MeshInstance3D" parent="Drawer/Box" unique_id=1373664065]
 mesh = SubResource("ArrayMesh_c41qr")
 
-[node name="Door" type="Node3D" parent="." unique_id=958561265]
+[node name="Door" type="Node3D" parent="." unique_id=154776861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205, 0.06, 0.41)
 script = ExtResource("6_b8arl")
 description = "Стопка журналов «Работница» за восьмидесятые."
 open_angle = -100.0
 kind = "cabinet"
 
-[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=1040543168]
+[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=1287949000]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=742939935]
+[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=825352505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205, 0.15, -0.009)
 shape = SubResource("BoxShape3D_0xaev")
 
-[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=1876291387]
+[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=1000036950]
 mesh = SubResource("ArrayMesh_kai37")
 
-[node name="DeskLamp" type="Node3D" parent="." unique_id=1999256348 groups=["lamp_bedside"] instance=ExtResource("7_csihb")]
+[node name="DeskLamp" type="Node3D" parent="." unique_id=169821918 groups=["lamp_bedside"] instance=ExtResource("7_csihb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 0.56, 0.22)
 script = ExtResource("8_ouvxi")
 on = true
@@ -237,40 +237,40 @@ pull_switch = true
 on_material = ExtResource("9_18g3s")
 off_material = ExtResource("10_smwha")
 
-[node name="Clock" type="Node3D" parent="." unique_id=637854109]
+[node name="Clock" type="Node3D" parent="." unique_id=182027136]
 transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, -0.12, 0.56, 0.28)
 script = ExtResource("11_mi2qq")
 title = "Будильник"
 description = "Будильник «Слава». Стрелки стоят на четверть четвёртого."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="Clock" unique_id=1443075892]
+[node name="Mesh" type="MeshInstance3D" parent="Clock" unique_id=867457556]
 mesh = SubResource("ArrayMesh_xqix5")
 
-[node name="Body" type="StaticBody3D" parent="Clock" unique_id=1901896131]
+[node name="Body" type="StaticBody3D" parent="Clock" unique_id=2010592132]
 
-[node name="Shape0" type="CollisionShape3D" parent="Clock/Body" unique_id=1628552542]
+[node name="Shape0" type="CollisionShape3D" parent="Clock/Body" unique_id=1075869429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
 shape = SubResource("BoxShape3D_61fbq")
 
-[node name="Photo" type="Node3D" parent="." unique_id=1221515704]
+[node name="Photo" type="Node3D" parent="." unique_id=2025500353]
 transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -0.1, 0.56, 0.1)
 script = ExtResource("11_mi2qq")
 title = "Фотография"
 description = "Мужчина, женщина и мальчик у моря. Подпись на обороте: «Сочи, 1984»."
 take = true
 
-[node name="Mesh" type="MeshInstance3D" parent="Photo" unique_id=417246052]
+[node name="Mesh" type="MeshInstance3D" parent="Photo" unique_id=422774214]
 mesh = SubResource("ArrayMesh_k2h3x")
 
-[node name="Body" type="StaticBody3D" parent="Photo" unique_id=1580186253]
+[node name="Body" type="StaticBody3D" parent="Photo" unique_id=1462530230]
 
-[node name="Shape0" type="CollisionShape3D" parent="Photo/Body" unique_id=1066263481]
+[node name="Shape0" type="CollisionShape3D" parent="Photo/Body" unique_id=1603967013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, -0.01)
 shape = SubResource("BoxShape3D_5huun")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1685804044]
+[node name="Body" type="StaticBody3D" parent="." unique_id=59561950]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1394853087]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1040178534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0.19)
 shape = SubResource("BoxShape3D_88a41")

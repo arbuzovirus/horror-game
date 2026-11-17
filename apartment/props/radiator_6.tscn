@@ -32,17 +32,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_r66fw"]
 size = Vector3(0.71000004, 0.74, 0.14)
 
-[node name="Radiator6" type="Node3D" unique_id=1168633994]
+[node name="Radiator6" type="Node3D" unique_id=823549469]
 script = ExtResource("1_ettb6")
 title = "Батарея"
 description = "Батарея под окном. Холодная."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1584628304]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=706340303]
 mesh = SubResource("ArrayMesh_dujck")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1651413629]
+[node name="Body" type="StaticBody3D" parent="." unique_id=329952175]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=543211139]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1318527157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000001, 0.37, 0.07)
 shape = SubResource("BoxShape3D_r66fw")

@@ -20,16 +20,16 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_ak47m"]
 size = Vector3(0.34, 0.46, 0.34)
 
-[node name="Stool" type="Node3D" unique_id=2099566374]
+[node name="Stool" type="Node3D" unique_id=1311512950]
 script = ExtResource("1_rtrtu")
 title = "Табурет"
 description = "Табурет. Одна ножка короче, он качается."
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1123664959]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=755370112]
 mesh = SubResource("ArrayMesh_yreh5")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2038779482]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1387268356]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=378528558]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=686305271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 shape = SubResource("BoxShape3D_ak47m")

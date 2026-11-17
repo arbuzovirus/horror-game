@@ -56,17 +56,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_5up15"]
 size = Vector3(0.5, 0.82, 0.4)
 
-[node name="WashBasin" type="Node3D" unique_id=528139729]
+[node name="WashBasin" type="Node3D" unique_id=611752441]
 script = ExtResource("1_sntma")
 title = "Раковина"
 description = "Раковина. Трещина от края до слива, по ней ржавая дорожка."
 material = "ceramic"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1371378820]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2092864534]
 mesh = SubResource("ArrayMesh_t3802")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2023550555]
+[node name="Body" type="StaticBody3D" parent="." unique_id=2029681016]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1140552004]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1178298142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41, 0.2)
 shape = SubResource("BoxShape3D_5up15")

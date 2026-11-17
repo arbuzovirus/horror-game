@@ -20,17 +20,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_lms0x"]
 size = Vector3(1.7, 1.2, 0.03)
 
-[node name="CarpetWallBed" type="Node3D" unique_id=1241832355]
+[node name="CarpetWallBed" type="Node3D" unique_id=1968078325]
 script = ExtResource("1_bst6y")
 title = "Ковёр"
 description = "Ковёр над кроватью. Под ним на обоях — карандашные отметки роста: «Серёжа, 5 лет», «6 лет», «7 лет». Дальше нет."
 material = "fabric"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=566129722]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=381447875]
 mesh = SubResource("ArrayMesh_47rai")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=721350967]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1077543872]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1031269981]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1167446415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.015)
 shape = SubResource("BoxShape3D_lms0x")

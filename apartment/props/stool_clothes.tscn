@@ -32,17 +32,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_1apnw"]
 size = Vector3(0.34, 0.46, 0.34)
 
-[node name="StoolClothes" type="Node3D" unique_id=763685449]
+[node name="StoolClothes" type="Node3D" unique_id=1768521567]
 script = ExtResource("1_w1l33")
 title = "Одежда"
 description = "Сложенная рубашка. Пуговицы застёгнуты до самого верха."
 material = "fabric"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=309630213]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=762813835]
 mesh = SubResource("ArrayMesh_mfuwb")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2107587080]
+[node name="Body" type="StaticBody3D" parent="." unique_id=768857523]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1849445710]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1315752717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 shape = SubResource("BoxShape3D_1apnw")

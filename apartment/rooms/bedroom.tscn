@@ -1,25 +1,31 @@
-[gd_scene format=4 uid="uid://dpl72o642u7bc"]
+[gd_scene format=4]
 
-[ext_resource type="Script" uid="uid://cm5d6ocem81b0" path="res://apartment/scripts/room.gd" id="1_abcdm"]
+[ext_resource type="Script" path="res://apartment/scripts/room.gd" id="1_abcdm"]
 [ext_resource type="Material" path="res://apartment/materials/parquet.tres" id="2_etrcp"]
 [ext_resource type="Material" path="res://apartment/materials/ceiling.tres" id="3_fjs26"]
 [ext_resource type="Material" path="res://apartment/materials/wallpaper_bed.tres" id="4_1d81s"]
 [ext_resource type="Material" path="res://apartment/materials/wood_dark.tres" id="5_g8uol"]
 [ext_resource type="PackedScene" path="res://apartment/props/window_120.tscn" id="6_j720n"]
 [ext_resource type="PackedScene" path="res://apartment/props/radiator_8.tscn" id="7_juepm"]
+[ext_resource type="Script" path="res://apartment/scripts/item.gd" id="8_chv57"]
 [ext_resource type="PackedScene" path="res://apartment/props/curtains_120.tscn" id="9_aq1qn"]
 [ext_resource type="PackedScene" path="res://apartment/props/bed.tscn" id="10_h4q1r"]
 [ext_resource type="PackedScene" path="res://apartment/props/carpet_wall_bed.tscn" id="11_82218"]
 [ext_resource type="PackedScene" path="res://apartment/props/nightstand.tscn" id="12_lk3s3"]
 [ext_resource type="PackedScene" path="res://apartment/props/wardrobe.tscn" id="13_0h4xq"]
 [ext_resource type="PackedScene" path="res://apartment/props/mirror_oval.tscn" id="14_otpx1"]
+[ext_resource type="PackedScene" path="res://apartment/props/stool_clothes.tscn" id="15_gdafs"]
 [ext_resource type="PackedScene" path="res://apartment/props/slippers.tscn" id="16_qgunu"]
 [ext_resource type="PackedScene" path="res://apartment/props/pendant.tscn" id="17_6uj67"]
+[ext_resource type="Script" path="res://apartment/scripts/lamp.gd" id="18_340ho"]
+[ext_resource type="Material" path="res://apartment/materials/bulb_on.tres" id="19_lqe1h"]
+[ext_resource type="Material" path="res://apartment/materials/bulb_off.tres" id="20_khmhe"]
 [ext_resource type="PackedScene" path="res://apartment/props/light_switch.tscn" id="21_py0mx"]
-[ext_resource type="Texture2D" uid="uid://coj38ijvu8cip" path="res://apartment/textures/decal_torn.png" id="23_cafhh"]
-[ext_resource type="Texture2D" uid="uid://boxnhcw68gwo0" path="res://apartment/textures/decal_mould.png" id="24_layv6"]
-[ext_resource type="Texture2D" uid="uid://dqn2qo4uq2s7i" path="res://apartment/textures/decal_damp.png" id="25_pqif2"]
-[ext_resource type="Texture2D" uid="uid://2oo7t7hqjqt4" path="res://apartment/textures/decal_crack.png" id="26_ydoug"]
+[ext_resource type="Script" path="res://apartment/scripts/light_switch.gd" id="22_v5t4w"]
+[ext_resource type="Texture2D" path="res://apartment/textures/decal_torn.png" id="23_cafhh"]
+[ext_resource type="Texture2D" path="res://apartment/textures/decal_mould.png" id="24_layv6"]
+[ext_resource type="Texture2D" path="res://apartment/textures/decal_damp.png" id="25_pqif2"]
+[ext_resource type="Texture2D" path="res://apartment/textures/decal_crack.png" id="26_ydoug"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pfk3h"]
 _surfaces = [{
@@ -98,135 +104,155 @@ size = Vector3(0.120000005, 2.5, 4.5999994)
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxr21"]
 size = Vector3(0.119999886, 2.5, 4.6)
 
-[node name="Bedroom" type="Node3D" unique_id=14348373]
+[node name="Bedroom" type="Node3D" unique_id=1516082326]
 script = ExtResource("1_abcdm")
 layer_bit = 17
 
-[node name="Shell" type="MeshInstance3D" parent="." unique_id=1169684427]
-layers = 131072
+[node name="Shell" type="MeshInstance3D" parent="." unique_id=171782532]
 mesh = SubResource("ArrayMesh_pfk3h")
 
-[node name="Window" parent="." unique_id=768593583 instance=ExtResource("6_j720n")]
+[node name="Window" type="Node3D" parent="." unique_id=454383467 instance=ExtResource("6_j720n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 0.85, -7.32)
 
-[node name="Radiator" parent="." unique_id=1530940647 instance=ExtResource("7_juepm")]
+[node name="Radiator" type="Node3D" parent="." unique_id=865310101 instance=ExtResource("7_juepm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 0, -7.32)
+script = ExtResource("8_chv57")
+title = "Батарея"
+description = "Батарея. Холодная."
+material = "metal"
 
-[node name="Curtains" parent="." unique_id=379281776 instance=ExtResource("9_aq1qn")]
+[node name="Curtains" type="Node3D" parent="." unique_id=259795965 instance=ExtResource("9_aq1qn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 2.28, -7.32)
 
-[node name="Bed" parent="." unique_id=1754235497 instance=ExtResource("10_h4q1r")]
+[node name="Bed" type="Node3D" parent="." unique_id=1074439734 instance=ExtResource("10_h4q1r")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.825, 0, -5.8)
+script = ExtResource("8_chv57")
+title = "Кровать"
+description = "Покрывало заправлено ровно. Матрас под ним продавлен с одной стороны."
+material = "fabric"
 
-[node name="WallCarpet" parent="." unique_id=1241832355 instance=ExtResource("11_82218")]
+[node name="WallCarpet" type="Node3D" parent="." unique_id=1968078325 instance=ExtResource("11_82218")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.825, 0.85, -5.8)
+script = ExtResource("8_chv57")
+title = "Ковёр"
+description = "Ковёр над кроватью. Под ним на обоях — карандашные отметки роста: «Серёжа, 5 лет», «6 лет», «7 лет». Дальше нет."
+material = "fabric"
 
-[node name="Nightstand" parent="." unique_id=501898311 instance=ExtResource("12_lk3s3")]
+[node name="Nightstand" type="Node3D" parent="." unique_id=1735427998 instance=ExtResource("12_lk3s3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.825, 0, -4.73)
 
-[node name="Wardrobe" parent="." unique_id=307546697 instance=ExtResource("13_0h4xq")]
-transform = Transform3D(0.0009984531, 0, -0.9999995, 0, 1, 0, 0.9999995, 0, 0.0009984531, 2.7729173, 0, -3.538067)
+[node name="Wardrobe" type="Node3D" parent="." unique_id=222116204 instance=ExtResource("13_0h4xq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.345, 0, -4.2)
 
-[node name="Mirror" parent="." unique_id=918087129 instance=ExtResource("14_otpx1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8569255, 1.55, -2.72)
+[node name="Mirror" type="Node3D" parent="." unique_id=994381467 instance=ExtResource("14_otpx1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.05, 1.55, -2.72)
+script = ExtResource("8_chv57")
+title = "Зеркало"
+description = "В зеркале — луч фонарика и темнота за спиной."
+material = "glass"
 
-[node name="Slippers" parent="." unique_id=1378184001 instance=ExtResource("16_qgunu")]
+[node name="Stool" type="Node3D" parent="." unique_id=1768521567 instance=ExtResource("15_gdafs")]
+transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, 1.95, 0, -3.25)
+script = ExtResource("8_chv57")
+title = "Одежда"
+description = "Сложенная рубашка. Пуговицы застёгнуты до самого верха."
+material = "fabric"
+
+[node name="Slippers" type="Node3D" parent="." unique_id=386112780 instance=ExtResource("16_qgunu")]
 transform = Transform3D(-0.14943816, 0, 0.9887711, 0, 1, 0, -0.9887711, 0, -0.14943816, 1, 0, -5.4)
+script = ExtResource("8_chv57")
+title = "Тапочки"
+description = "Тапочки стоят носками к кровати, как будто в них только что легли спать."
+material = "fabric"
 
-[node name="Lamp" parent="." unique_id=1609869224 groups=["lamp_bedroom"] instance=ExtResource("17_6uj67")]
+[node name="Lamp" type="Node3D" parent="." unique_id=1148033120 groups=["lamp_bedroom"] instance=ExtResource("17_6uj67")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 2.5, -5)
+script = ExtResource("18_340ho")
+on_material = ExtResource("19_lqe1h")
+off_material = ExtResource("20_khmhe")
 
-[node name="Switch" parent="." unique_id=1321624655 instance=ExtResource("21_py0mx")]
+[node name="Switch" type="Node3D" parent="." unique_id=664623339 instance=ExtResource("21_py0mx")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.26, 1.35, -2.72)
+script = ExtResource("22_v5t4w")
 lamp_group = "lamp_bedroom"
 
-[node name="WindowLight" type="OmniLight3D" parent="." unique_id=1291471707]
+[node name="WindowLight" type="OmniLight3D" parent="." unique_id=2126217668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 1.6, -6.9)
-layers = 131072
 light_color = Color(0.45, 0.58, 0.85, 1)
 light_energy = 0.45
-light_cull_mask = 131072
 omni_range = 3.2
 omni_attenuation = 1.6
 
-[node name="DecalTorn" type="Decal" parent="." unique_id=2028396279]
+[node name="DecalTorn" type="Decal" parent="." unique_id=818566357]
 transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.345, 1.2, -6.4)
-layers = 131072
 size = Vector3(0.8, 0.16, 0.9)
 texture_albedo = ExtResource("23_cafhh")
 normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
-cull_mask = 131072
 
-[node name="DecalMould" type="Decal" parent="." unique_id=25687132]
+[node name="DecalMould" type="Decal" parent="." unique_id=1639327679]
 transform = Transform3D(-4.371139e-08, 0, 1, 1, 0, 4.371139e-08, 0, 1, 0, 2.6, 2.25, -7.32)
-layers = 131072
 size = Vector3(0.5, 0.16, 0.6)
 texture_albedo = ExtResource("24_layv6")
 normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
-cull_mask = 131072
 
-[node name="CeilingDamp" type="Decal" parent="." unique_id=1327600259]
+[node name="CeilingDamp" type="Decal" parent="." unique_id=492438763]
 transform = Transform3D(0.5403023, 0, 0.84147096, 0, -1, 0, 0.84147096, 0, -0.5403023, 0.9, 2.5, -6.6)
-layers = 131072
 size = Vector3(1.1, 0.16, 1.1)
 texture_albedo = ExtResource("25_pqif2")
 normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
-cull_mask = 131072
 
-[node name="DecalCrack" type="Decal" parent="." unique_id=85273548]
+[node name="DecalCrack" type="Decal" parent="." unique_id=1778735920]
 transform = Transform3D(-0.9553365, 0, 0.29552022, -0.29552022, 0, -0.9553365, 0, -1, 0, 1.4, 2, -2.72)
-layers = 131072
 size = Vector3(0.4, 0.16, 0.7)
 texture_albedo = ExtResource("26_ydoug")
 normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
-cull_mask = 131072
 
-[node name="Walls" type="StaticBody3D" parent="." unique_id=769605535]
+[node name="Walls" type="StaticBody3D" parent="." unique_id=1761004400]
 
-[node name="Shape0" type="CollisionShape3D" parent="Walls" unique_id=1620435614]
+[node name="Shape0" type="CollisionShape3D" parent="Walls" unique_id=1130448520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, -0.075, -5.02)
 shape = SubResource("BoxShape3D_6jlbr")
 
-[node name="Shape1" type="CollisionShape3D" parent="Walls" unique_id=2097389968]
+[node name="Shape1" type="CollisionShape3D" parent="Walls" unique_id=334813342]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.965, 1.25, -2.66)
 shape = SubResource("BoxShape3D_fypyw")
 
-[node name="Shape2" type="CollisionShape3D" parent="Walls" unique_id=112454589]
+[node name="Shape2" type="CollisionShape3D" parent="Walls" unique_id=498613104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.775, 2.25, -2.66)
 shape = SubResource("BoxShape3D_f55vi")
 
-[node name="Shape3" type="CollisionShape3D" parent="Walls" unique_id=1994967184]
+[node name="Shape3" type="CollisionShape3D" parent="Walls" unique_id=971776628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39499998, 1.25, -2.66)
 shape = SubResource("BoxShape3D_gr52c")
 
-[node name="Shape4" type="CollisionShape3D" parent="Walls" unique_id=131965188]
+[node name="Shape4" type="CollisionShape3D" parent="Walls" unique_id=1203164359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.665, 1.25, -7.38)
 shape = SubResource("BoxShape3D_wvun1")
 
-[node name="Shape5" type="CollisionShape3D" parent="Walls" unique_id=2008259348]
+[node name="Shape5" type="CollisionShape3D" parent="Walls" unique_id=1481203032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 0.425, -7.38)
 shape = SubResource("BoxShape3D_2b845")
 
-[node name="Shape6" type="CollisionShape3D" parent="Walls" unique_id=77689371]
+[node name="Shape6" type="CollisionShape3D" parent="Walls" unique_id=667738538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.585, 2.3, -7.38)
 shape = SubResource("BoxShape3D_rcm5d")
 
-[node name="Shape7" type="CollisionShape3D" parent="Walls" unique_id=703138890]
+[node name="Shape7" type="CollisionShape3D" parent="Walls" unique_id=1068590323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.505, 1.25, -7.38)
 shape = SubResource("BoxShape3D_yiu4u")
 
-[node name="Shape8" type="CollisionShape3D" parent="Walls" unique_id=1965180078]
+[node name="Shape8" type="CollisionShape3D" parent="Walls" unique_id=1956173249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285, 1.25, -5.02)
 shape = SubResource("BoxShape3D_afxfx")
 
-[node name="Shape9" type="CollisionShape3D" parent="Walls" unique_id=699262739]
+[node name="Shape9" type="CollisionShape3D" parent="Walls" unique_id=729245344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.885, 1.25, -5.0200005)
 shape = SubResource("BoxShape3D_oxr21")

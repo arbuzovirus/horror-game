@@ -97,30 +97,30 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_v785g"]
 size = Vector3(0.32, 0.42, 0.12)
 
-[node name="ElectricPanel" type="Node3D" unique_id=2143309604]
+[node name="ElectricPanel" type="Node3D" unique_id=627704896]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=507741103]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=830096217]
 mesh = SubResource("ArrayMesh_bpktv")
 
-[node name="Door" type="Node3D" parent="." unique_id=334887642]
+[node name="Door" type="Node3D" parent="." unique_id=877806379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16, 0, 0.125)
 script = ExtResource("6_5hxaj")
 description = "Счётчик «СО-2». Диск не крутится. Пробки вывернуты наполовину."
 open_angle = -110.0
 kind = "small_metal"
 
-[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=1460237181]
+[node name="Leaf" type="AnimatableBody3D" parent="Door" unique_id=633301347]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=1106546412]
+[node name="Shape0" type="CollisionShape3D" parent="Door/Leaf" unique_id=404169147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0.21, -0.006)
 shape = SubResource("BoxShape3D_62bk6")
 
-[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=741055188]
+[node name="Mesh" type="MeshInstance3D" parent="Door/Leaf" unique_id=241538083]
 mesh = SubResource("ArrayMesh_3hjf7")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=2023943623]
+[node name="Body" type="StaticBody3D" parent="." unique_id=318924557]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1449547931]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1785846846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0.06)
 shape = SubResource("BoxShape3D_v785g")

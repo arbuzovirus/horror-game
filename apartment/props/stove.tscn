@@ -128,16 +128,16 @@ size = Vector3(0.1, 0.05, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_88mtr"]
 size = Vector3(0.5, 0.9, 0.55)
 
-[node name="Stove" type="Node3D" unique_id=1878837851]
+[node name="Stove" type="Node3D" unique_id=525254805]
 script = ExtResource("1_0gind")
 title = "Плита"
 description = "Газовая плита «Брест». Краны закрыты, ручки залипли от жира."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=987974468]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1232805852]
 mesh = SubResource("ArrayMesh_h3rxr")
 
-[node name="Oven" type="Node3D" parent="." unique_id=401707149]
+[node name="Oven" type="Node3D" parent="." unique_id=1339297078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.55)
 script = ExtResource("7_jqlhf")
 description = "Духовка. Внутри противень с чёрным нагаром."
@@ -145,17 +145,17 @@ open_angle = 80.0
 axis = "x"
 kind = "oven"
 
-[node name="Leaf" type="AnimatableBody3D" parent="Oven" unique_id=1064241034]
+[node name="Leaf" type="AnimatableBody3D" parent="Oven" unique_id=684859135]
 sync_to_physics = false
 
-[node name="Shape0" type="CollisionShape3D" parent="Oven/Leaf" unique_id=44382714]
+[node name="Shape0" type="CollisionShape3D" parent="Oven/Leaf" unique_id=20797572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29, 0.015000001)
 shape = SubResource("BoxShape3D_8o15v")
 
-[node name="Mesh" type="MeshInstance3D" parent="Oven/Leaf" unique_id=1151941080]
+[node name="Mesh" type="MeshInstance3D" parent="Oven/Leaf" unique_id=332304506]
 mesh = SubResource("ArrayMesh_d31f8")
 
-[node name="Matches" type="Node3D" parent="." unique_id=738610926]
+[node name="Matches" type="Node3D" parent="." unique_id=1278209172]
 transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, 0.14, 0.88, 0.42)
 script = ExtResource("1_0gind")
 title = "Спички"
@@ -163,17 +163,17 @@ description = "Коробок спичек «Гигант». Осталось т
 take = true
 material = "small"
 
-[node name="Mesh" type="MeshInstance3D" parent="Matches" unique_id=617219895]
+[node name="Mesh" type="MeshInstance3D" parent="Matches" unique_id=1273442857]
 mesh = SubResource("ArrayMesh_1fsqq")
 
-[node name="Body" type="StaticBody3D" parent="Matches" unique_id=841452076]
+[node name="Body" type="StaticBody3D" parent="Matches" unique_id=1625672037]
 
-[node name="Shape0" type="CollisionShape3D" parent="Matches/Body" unique_id=1521300914]
+[node name="Shape0" type="CollisionShape3D" parent="Matches/Body" unique_id=1362120265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 shape = SubResource("BoxShape3D_d7kja")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=791989250]
+[node name="Body" type="StaticBody3D" parent="." unique_id=237273398]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1545865447]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1455862664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0.275)
 shape = SubResource("BoxShape3D_88mtr")

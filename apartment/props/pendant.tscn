@@ -57,18 +57,18 @@ _surfaces = [{
 "vertex_data": PackedByteArray("zczMvNej8L7NzMy8zczMPNej8L7NzMy8CtejPBSux74K16O8CtejvBSux74K16O8zczMPNej8L7NzMy8zczMPNej8L7NzMw8CtejPBSux74K16M8CtejPBSux74K16O8zczMPNej8L7NzMw8zczMvNej8L7NzMw8CtejvBSux74K16M8CtejPBSux74K16M8zczMvNej8L7NzMw8zczMvNej8L7NzMy8CtejvBSux74K16O8CtejvBSux74K16M8CtejvBSux74K16M8CtejvBSux74K16O8CtejPBSux74K16O8CtejPBSux74K16M8zczMvNej8L7NzMy8zczMvNej8L7NzMw8zczMPNej8L7NzMw8zczMPNej8L7NzMy8d/j//wd4O4B3+P//B3g7gHf4//8HeDuAd/j//wd4O4B3+IeHh3+/w3f4h4eHf7/Dd/iHh4d/v8N3+IeHh3+/w/9/h4eHf/uD/3+Hh4d/+4P/f4eHh3/7g/9/h4eHf/uDhweHh4d/P7yHB4eHh38/vIcHh4eHfz+8hweHh4d/P7z/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
 }]
 
-[node name="Pendant" type="Node3D" unique_id=1609869224]
+[node name="Pendant" type="Node3D" unique_id=1148033120]
 script = ExtResource("1_bmpo4")
 on_material = ExtResource("2_fr522")
 off_material = ExtResource("3_2if6n")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1027721331]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1914797710]
 mesh = SubResource("ArrayMesh_lcjvf")
 
-[node name="Bulb" type="MeshInstance3D" parent="." unique_id=1911274124]
+[node name="Bulb" type="MeshInstance3D" parent="." unique_id=989643306]
 mesh = SubResource("ArrayMesh_5uurc")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=361841774]
+[node name="Light" type="OmniLight3D" parent="." unique_id=333320554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 light_color = Color(1, 0.76, 0.48, 1)
 omni_range = 4.8

@@ -74,12 +74,12 @@ size = Vector3(0.22, 0.03, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6ivx"]
 size = Vector3(0.74, 0.76, 0.64)
 
-[node name="KitchenTable" type="Node3D" unique_id=990291640]
+[node name="KitchenTable" type="Node3D" unique_id=1772829441]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=113371916]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1399244401]
 mesh = SubResource("ArrayMesh_yaeky")
 
-[node name="Newspaper" type="Node3D" parent="." unique_id=1764564169]
+[node name="Newspaper" type="Node3D" parent="." unique_id=1500242213]
 transform = Transform3D(0.9689124, 0, 0.24740396, 0, 1, 0, -0.24740396, 0, 0.9689124, -0.05, 0.756, 0.06)
 script = ExtResource("5_vmkqa")
 title = "Газета"
@@ -87,17 +87,17 @@ description = "«Правда», 19 августа 1991 года. Кроссво
 take = true
 material = "paper"
 
-[node name="Mesh" type="MeshInstance3D" parent="Newspaper" unique_id=1349855231]
+[node name="Mesh" type="MeshInstance3D" parent="Newspaper" unique_id=1317249584]
 mesh = SubResource("ArrayMesh_ji7ta")
 
-[node name="Body" type="StaticBody3D" parent="Newspaper" unique_id=1604894367]
+[node name="Body" type="StaticBody3D" parent="Newspaper" unique_id=1221755918]
 
-[node name="Shape0" type="CollisionShape3D" parent="Newspaper/Body" unique_id=2048829978]
+[node name="Shape0" type="CollisionShape3D" parent="Newspaper/Body" unique_id=440647087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
 shape = SubResource("BoxShape3D_fqxtd")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=335237058]
+[node name="Body" type="StaticBody3D" parent="." unique_id=226567828]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1599918885]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1111836344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
 shape = SubResource("BoxShape3D_l6ivx")

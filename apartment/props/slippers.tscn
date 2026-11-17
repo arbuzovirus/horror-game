@@ -20,17 +20,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5g52"]
 size = Vector3(0.3, 0.07, 0.28)
 
-[node name="Slippers" type="Node3D" unique_id=1378184001]
+[node name="Slippers" type="Node3D" unique_id=386112780]
 script = ExtResource("1_kuq5i")
 title = "Тапочки"
 description = "Тапочки стоят носками к кровати, как будто в них только что легли спать."
 material = "fabric"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=169424249]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=929609323]
 mesh = SubResource("ArrayMesh_5w72l")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=600072431]
+[node name="Body" type="StaticBody3D" parent="." unique_id=953207989]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=2001030940]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1697314760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0)
 shape = SubResource("BoxShape3D_c5g52")

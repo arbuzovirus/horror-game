@@ -47,21 +47,21 @@ size = Vector3(2, 0.5, 0.87)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyli4"]
 size = Vector3(2, 0.95, 0.29999998)
 
-[node name="Sofa" type="Node3D" unique_id=326154585]
+[node name="Sofa" type="Node3D" unique_id=354985725]
 script = ExtResource("1_e2ktc")
 title = "Диван"
 description = "Диван-книжка. Обивка протёрта до ниток, в щели между подушками — пуговица и шпилька."
 material = "fabric"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2051520070]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1323472792]
 mesh = SubResource("ArrayMesh_5cmk8")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=1153071485]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1172815860]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=502613382]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1646551399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.015000001)
 shape = SubResource("BoxShape3D_spv8l")
 
-[node name="Shape1" type="CollisionShape3D" parent="Body" unique_id=1221060956]
+[node name="Shape1" type="CollisionShape3D" parent="Body" unique_id=501527357]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475, -0.3)
 shape = SubResource("BoxShape3D_jyli4")

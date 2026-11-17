@@ -121,42 +121,42 @@ size = Vector3(0.120000005, 2.5, 0.13999999)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ipmkh"]
 size = Vector3(0.119999886, 2.5, 0.93)
 
-[node name="Toilet" type="Node3D" unique_id=922855587]
+[node name="Toilet" type="Node3D" unique_id=946527553]
 script = ExtResource("1_y6rgd")
 layer_bit = 19
 
-[node name="Shell" type="MeshInstance3D" parent="." unique_id=1065853610]
+[node name="Shell" type="MeshInstance3D" parent="." unique_id=1646512805]
 mesh = SubResource("ArrayMesh_2x7ag")
 
-[node name="Toilet" type="Node3D" parent="." unique_id=444392959 instance=ExtResource("9_ir1tj")]
+[node name="Toilet" type="Node3D" parent="." unique_id=1213443293 instance=ExtResource("9_ir1tj")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.45, 0, -0.66)
 script = ExtResource("10_5c3gf")
 title = "Унитаз"
 description = "Унитаз. Воды нет, на фаянсе бурый налёт."
 material = "ceramic"
 
-[node name="Tank" type="Node3D" parent="." unique_id=1695506032 instance=ExtResource("11_v0722")]
+[node name="Tank" type="Node3D" parent="." unique_id=1135114681 instance=ExtResource("11_v0722")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.825, 1.85, -0.66)
 script = ExtResource("10_5c3gf")
 title = "Бачок"
 description = "Чугунный бачок под потолком. Цепочка обмотана проволокой."
 material = "metal"
 
-[node name="Vent" type="Node3D" parent="." unique_id=1140793635 instance=ExtResource("12_56w6n")]
+[node name="Vent" type="Node3D" parent="." unique_id=690321170 instance=ExtResource("12_56w6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 2.2, -1.13)
 script = ExtResource("10_5c3gf")
 title = "Вентиляция"
 description = "Вентиляционная решётка. Из шахты тянет холодом, где-то далеко капает вода."
 material = "metal"
 
-[node name="Paper" type="Node3D" parent="." unique_id=1794194685 instance=ExtResource("13_p2ukf")]
+[node name="Paper" type="Node3D" parent="." unique_id=703194117 instance=ExtResource("13_p2ukf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 1, -1.13)
 script = ExtResource("10_5c3gf")
 title = "Газета"
 description = "Нарезанная газета на гвозде."
 material = "paper"
 
-[node name="Lamp" type="Node3D" parent="." unique_id=1739623986 groups=["lamp_toilet"] instance=ExtResource("14_cct03")]
+[node name="Lamp" type="Node3D" parent="." unique_id=689558600 groups=["lamp_toilet"] instance=ExtResource("14_cct03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05, 2.5, -0.66)
 script = ExtResource("15_fueql")
 energy = 0.9
@@ -164,7 +164,7 @@ flicker = 0.6
 on_material = ExtResource("16_nf1up")
 off_material = ExtResource("17_6nxj7")
 
-[node name="DecalMould" type="Decal" parent="." unique_id=1780280447]
+[node name="DecalMould" type="Decal" parent="." unique_id=632153933]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 2.8, 0.4, -1.13)
 size = Vector3(0.5, 0.16, 0.6)
 texture_albedo = ExtResource("18_8ciyi")
@@ -172,7 +172,7 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="CeilingDamp" type="Decal" parent="." unique_id=1755181999]
+[node name="CeilingDamp" type="Decal" parent="." unique_id=1528562338]
 transform = Transform3D(0.9800666, 0, 0.19866933, 0, -1, 0, 0.19866933, 0, -0.9800666, 2.3, 2.5, -0.6)
 size = Vector3(0.8, 0.16, 0.8)
 texture_albedo = ExtResource("19_orj8r")
@@ -180,32 +180,32 @@ normal_fade = 0.5
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="Walls" type="StaticBody3D" parent="." unique_id=2046068258]
+[node name="Walls" type="StaticBody3D" parent="." unique_id=1759070203]
 
-[node name="Shape0" type="CollisionShape3D" parent="Walls" unique_id=727948358]
+[node name="Shape0" type="CollisionShape3D" parent="Walls" unique_id=393728754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05, -0.075, -0.665)
 shape = SubResource("BoxShape3D_h2lqd")
 
-[node name="Shape1" type="CollisionShape3D" parent="Walls" unique_id=918930871]
+[node name="Shape1" type="CollisionShape3D" parent="Walls" unique_id=1674872309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0500002, 1.25, -0.14)
 shape = SubResource("BoxShape3D_4ymi4")
 
-[node name="Shape2" type="CollisionShape3D" parent="Walls" unique_id=1223972298]
+[node name="Shape2" type="CollisionShape3D" parent="Walls" unique_id=192244176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05, 1.25, -1.19)
 shape = SubResource("BoxShape3D_00tgp")
 
-[node name="Shape3" type="CollisionShape3D" parent="Walls" unique_id=881034485]
+[node name="Shape3" type="CollisionShape3D" parent="Walls" unique_id=660828070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 1.25, -0.265)
 shape = SubResource("BoxShape3D_yklq8")
 
-[node name="Shape4" type="CollisionShape3D" parent="Walls" unique_id=1059244729]
+[node name="Shape4" type="CollisionShape3D" parent="Walls" unique_id=552217813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 2.25, -0.65999997)
 shape = SubResource("BoxShape3D_rushn")
 
-[node name="Shape5" type="CollisionShape3D" parent="Walls" unique_id=849035693]
+[node name="Shape5" type="CollisionShape3D" parent="Walls" unique_id=1569062825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2149999, 1.25, -1.06)
 shape = SubResource("BoxShape3D_62v3v")
 
-[node name="Shape6" type="CollisionShape3D" parent="Walls" unique_id=166766317]
+[node name="Shape6" type="CollisionShape3D" parent="Walls" unique_id=2030484394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.885, 1.25, -0.66499996)
 shape = SubResource("BoxShape3D_ipmkh")

@@ -45,19 +45,19 @@ _surfaces = [{
 "vertex_data": PackedByteArray("CtejvI/C9byPwnU9CtejPI/C9byPwnU9j8J1PI/C9Ty4HoU9j8J1vI/C9Ty4HoU9CtejPI/C9byPwnU9CtejPI/C9bzMzMw9j8J1PI/C9Txcj8I9j8J1PI/C9Ty4HoU9CtejPI/C9bzMzMw9CtejvI/C9bzMzMw9j8J1vI/C9Txcj8I9j8J1PI/C9Txcj8I9CtejvI/C9bzMzMw9CtejvI/C9byPwnU9j8J1vI/C9Ty4HoU9j8J1vI/C9Txcj8I9j8J1vI/C9Txcj8I9j8J1vI/C9Ty4HoU9j8J1PI/C9Ty4HoU9j8J1PI/C9Txcj8I9CtejvI/C9byPwnU9CtejvI/C9bzMzMw9CtejPI/C9bzMzMw9CtejPI/C9byPwnU9Jvb//2Z1Z4Am9v//ZnVngCb2//9mdWeAJvb//2Z1Z4Am9tiJLn/jxCb22Ikuf+PEJvbYiS5/48Qm9tiJLn/jxP9/2Ikuf0yF/3/YiS5/TIX/f9iJLn9Mhf9/2Ikuf0yF2AnYiS5/GrvYCdiJLn8au9gJ2Ikufxq72AnYiS5/Grv/f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+/")
 }]
 
-[node name="WallLamp" type="Node3D" unique_id=180866102]
+[node name="WallLamp" type="Node3D" unique_id=1576631390]
 script = ExtResource("1_epcfg")
 energy = 0.8
 on_material = ExtResource("2_mmu8s")
 off_material = ExtResource("3_ljaf5")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1526876847]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=268440155]
 mesh = SubResource("ArrayMesh_twyom")
 
-[node name="Bulb" type="MeshInstance3D" parent="." unique_id=1754249737]
+[node name="Bulb" type="MeshInstance3D" parent="." unique_id=1831856755]
 mesh = SubResource("ArrayMesh_bvnth")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=270667428]
+[node name="Light" type="OmniLight3D" parent="." unique_id=795979466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
 light_color = Color(1, 0.76, 0.48, 1)
 omni_range = 3.0

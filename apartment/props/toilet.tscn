@@ -56,17 +56,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7x2v"]
 size = Vector3(0.4, 0.42, 0.64)
 
-[node name="Toilet" type="Node3D" unique_id=444392959]
+[node name="Toilet" type="Node3D" unique_id=1213443293]
 script = ExtResource("1_u60p3")
 title = "Унитаз"
 description = "Унитаз. Воды нет, на фаянсе бурый налёт."
 material = "ceramic"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1507238513]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1287270757]
 mesh = SubResource("ArrayMesh_8c8jf")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=459074569]
+[node name="Body" type="StaticBody3D" parent="." unique_id=1553420276]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=895388534]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1106222927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0)
 shape = SubResource("BoxShape3D_m7x2v")

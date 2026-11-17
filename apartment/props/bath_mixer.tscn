@@ -20,17 +20,17 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_tfrb5"]
 size = Vector3(0.35000002, 0.2, 0.32)
 
-[node name="BathMixer" type="Node3D" unique_id=1461685792]
+[node name="BathMixer" type="Node3D" unique_id=385680971]
 script = ExtResource("1_62qht")
 title = "Смеситель"
 description = "Вентили не поворачиваются. В трубах сухо."
 material = "metal"
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1357671193]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=999220487]
 mesh = SubResource("ArrayMesh_r31nw")
 
-[node name="Body" type="StaticBody3D" parent="." unique_id=950344309]
+[node name="Body" type="StaticBody3D" parent="." unique_id=2011389289]
 
-[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=261056303]
+[node name="Shape0" type="CollisionShape3D" parent="Body" unique_id=1072540608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024999999, 0, 0.16)
 shape = SubResource("BoxShape3D_tfrb5")
